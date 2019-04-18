@@ -3,20 +3,20 @@
         <h1 class="font-weight-thin display-3 text-xs-center animated bounceInDown">Contact</h1>
         <br><br><br>
         <v-flex offset-lg2 lg8 offset-md1 md10 xs12>
+            <v-alert
+                    value="true"
+                    icon="fas fa-exclamation-triangle"
+                    color="red"
+                    class="title animated fadeInLeftBig"
+            >
+                Under construction.
+            </v-alert>
             <form method="post">
                 <v-layout
                         row
                         v-for="(field, index) in fields"
                         v-bind:key="index"
                 >
-                    <v-alert
-                            value="true"
-                            icon="fas fa-exclamation-triangle"
-                            color="red"
-                            class="title animated fadeInLeftBig"
-                    >
-                        Under construction.
-                    </v-alert>
                     <component
                             v-bind:is="field.type"
                             v-bind:class="'title ' + field.animation"

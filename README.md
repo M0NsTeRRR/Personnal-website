@@ -16,9 +16,9 @@ This is my own website :)
 
 # Install
 
-- Create Nginx configuration `/etc/nginx/sites-available/adminafk.fr`
-- Create the symlink `ln -s /etc/nginx/sites-available/adminafk.fr /etc/nginx/sites-enable/adminafk.fr`
-- Use certbot & let's encrypt for HTTPS and to force redirection HTTP to HTTPS `certbot certonly --nginx -d adminafk.fr -d admin.adminafk.fr -d api.adminafk.fr -d ludovic-ortega.adminafk.fr`
+- Put Nginx configuration `/etc/nginx/sites-available/adminafk.fr`
+- Create the symlink `ln -s /etc/nginx/sites-available/adminafk.fr /etc/nginx/sites-enabled/adminafk.fr`
+- Use certbot & let's encrypt for HTTPS and to force redirection HTTP to HTTPS `certbot --nginx -d adminafk.fr -d admin.adminafk.fr -d api.adminafk.fr -d ludovic-ortega.adminafk.fr`
 - Restart Nginx `systemctl restart nginx`
 
 #### Frontend
