@@ -30,7 +30,7 @@
                         <br>
                         <v-card>
                             <v-card-title>
-                                <div class="title font-weight-light animated bounceInLeft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ person.presentation }}</div>
+                                <div class="title font-weight-light animated bounceInLeft">{{ person.presentation }}</div>
                             </v-card-title>
                         </v-card>
                         <br>
@@ -48,7 +48,7 @@
                                     <v-icon color="teal">fas fa-plus</v-icon>
                                 </template>
                                 <template v-slot:header>
-                                    <div>{{ work.title }}</div>
+                                    <div class="title font-weight-light">{{ work.title }}</div>
                                 </template>
                                 <v-card>
                                     <v-card-text class="grey lighten-3">{{ work.description }}</v-card-text>
@@ -69,7 +69,7 @@
                                     <v-icon color="teal">fas fa-plus</v-icon>
                                 </template>
                                 <template v-slot:header>
-                                    <div>{{ work.title }}</div>
+                                    <div class="title font-weight-light">{{ work.title }}</div>
                                 </template>
                                 <v-card>
                                     <v-card-text class="grey lighten-3">{{ work.description }}</v-card-text>
@@ -87,7 +87,7 @@
                                     v-for="language in languages"
                                     v-bind:key="language.id"
                             >
-                                <div class="title font-weight-light text-capitalize animated bounceInLeft">- {{ language.name }} {{ render_optionnalField('(', language.level, ')') }}</div>
+                                <div class="title font-weight-light text-capitalize animated bounceInLeft">{{ language.name }} {{ render_optionnalField('(', language.level, ')') }}</div>
                             </v-card-title>
                         </v-card>
                         <br>
@@ -105,7 +105,7 @@
                                     <v-icon color="teal">fas fa-plus</v-icon>
                                 </template>
                                 <template v-slot:header>
-                                    <div>{{ education.title }}</div>
+                                    <div class="title font-weight-light">{{ education.title }}</div>
                                 </template>
                                 <v-card>
                                     <v-card-text v-if="education.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="education.url" target="_blank">Website</v-btn></v-card-text>
