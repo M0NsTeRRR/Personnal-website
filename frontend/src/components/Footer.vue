@@ -1,7 +1,7 @@
 <template>
     <v-footer
             dark
-            height="155"
+            height="145"
     >
         <v-card
                 flat

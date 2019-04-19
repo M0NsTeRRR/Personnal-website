@@ -85,7 +85,6 @@ class SkillTheme(models.Model):
 class SkillItem(models.Model):
     skill_theme = models.ForeignKey(SkillTheme, related_name='skillItems', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    link = models.OneToOneField(Link, on_delete=models.PROTECT)
     stars = models.IntegerField(
         validators=[
             MaxValueValidator(5),
@@ -104,6 +103,7 @@ class Experience(models.Model):
     )
     person = models.ForeignKey(Person, related_name='experiences', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
+    description = models.TextField(max_length=1000)
     url = models.URLField(max_length=200, blank=True)
     type = models.CharField(max_length=100, choices=TYPE_CHOICE, default='work')
 
@@ -148,7 +148,7 @@ class Social(models.Model):
 class Project(models.Model):
     person = models.ForeignKey(Person, related_name='projects', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    description = models.CharField(max_length=1000, blank=True)
+    description = models.TextField(max_length=1000)
     img = models.URLField(max_length=200)
     link = models.OneToOneField(Link, on_delete=models.PROTECT)
     start_date = models.DateField()

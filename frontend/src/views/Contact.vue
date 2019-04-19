@@ -2,48 +2,50 @@
     <v-container>
         <h1 class="font-weight-thin display-3 text-xs-center animated bounceInDown">Contact</h1>
         <br><br><br>
-        <v-flex offset-lg2 lg8 offset-md1 md10 xs12>
-            <v-alert
-                    value="true"
-                    icon="fas fa-exclamation-triangle"
-                    color="red"
-                    class="title animated fadeInLeftBig"
-            >
-                Under construction.
-            </v-alert>
-            <form method="post">
-                <v-layout
-                        row
-                        v-for="(field, index) in fields"
-                        v-bind:key="index"
+        <v-layout>
+            <v-flex offset-lg2 lg8 offset-md1 md10 xs12>
+                <v-alert
+                        value="true"
+                        icon="fas fa-exclamation-triangle"
+                        color="red"
+                        class="title animated fadeInLeftBig"
                 >
-                    <component
-                            v-bind:is="field.type"
-                            v-bind:class="'title ' + field.animation"
-                            outline
-                            clearable
-                            clear-icon="fas fa-times-circle"
-                            v-bind:append-outer-icon="field.icon"
-                            background-color="teal"
-                            color="teal"
-                            v-bind:name="field.name"
-                            v-bind:label="field.label"
-                            required
-                    ></component>
-                </v-layout>
-                <v-layout row justify-center>
-                    <v-btn
-                            type="submit"
-                            color="teal"
-                            class="font-weight-light title white--text animated bounceInUp"
-                            disabled
+                    Under construction.
+                </v-alert>
+                <form method="post">
+                    <v-layout
+                            row
+                            v-for="(field, index) in fields"
+                            v-bind:key="index"
                     >
-                        Submit
-                        <v-icon right>fas fa-paper-plane</v-icon>
-                    </v-btn>
-                </v-layout>
-            </form>
-        </v-flex>
+                        <component
+                                v-bind:is="field.type"
+                                class="title animated fadeIn slow"
+                                outline
+                                clearable
+                                clear-icon="fas fa-times-circle"
+                                v-bind:append-outer-icon="field.icon"
+                                background-color="teal"
+                                color="teal"
+                                v-bind:name="field.name"
+                                v-bind:label="field.label"
+                                required
+                        ></component>
+                    </v-layout>
+                    <v-layout row justify-center>
+                        <v-btn
+                                type="submit"
+                                color="teal"
+                                class="font-weight-light title white--text animated bounceInUp"
+                                disabled
+                        >
+                            Submit
+                            <v-icon right>fas fa-paper-plane</v-icon>
+                        </v-btn>
+                    </v-layout>
+                </form>
+            </v-flex>
+        </v-layout>
     </v-container>
 </template>
 
@@ -61,13 +63,6 @@
                 {icon: 'far fa-comment-dots', name: 'message', label: 'Message', type: 'v-textarea', animation: 'animated bounceInRight'},
             ],
             animation_contact: true
-        }),
-        methods: {
-            rotate_animation: function()
-            {
-                this.animation_contact = !this.animation_contact;
-                return this.animation_contact;
-            }
-        }
+        })
     }
 </script>

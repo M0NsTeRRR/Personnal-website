@@ -3,7 +3,7 @@
         <h1 class="font-weight-thin display-3 text-xs-center animated bounceInDown">Portfolio</h1>
         <br><br><br>
         <v-layout
-                v-if="!api_error && projects"
+                v-if="!api_error"
                 row
                 wrap
         >
@@ -16,7 +16,7 @@
                     md4
             >
                 <v-hover>
-                    <v-card>
+                    <v-card color="teal lighten-5">
                         <v-img
                                 v-bind:src="project.img"
                                 v-bind:alt="project.title"
@@ -34,7 +34,7 @@
                         <v-card-actions>
                             <v-btn
                                     v-bind:color="get_iconBackground(project.link.type)"
-                                    class="white--text title font-weight-light"
+                                    class="white--text subheading font-weight-light"
                                     v-bind:href="project.link.url"
                                     target="_blank"
                             >{{ project.link.title }}
@@ -61,18 +61,17 @@
             </v-flex>
             <v-dialog
                     v-model="dialog.visible"
-                    persistent
                     width="500"
             >
                 <v-card>
                     <v-card-title
-                            class="white--text headline teal"
+                            class="white--text display-1 teal"
                             primary-title
                     >
                         Description
                     </v-card-title>
 
-                    <v-card-text class="subheading">
+                    <v-card-text class="headline">
                         {{ dialog.description }}
                     </v-card-text>
 
@@ -81,7 +80,7 @@
                     <v-card-actions>
                         <v-btn
                                 v-bind:color="dialog.button.color"
-                                class="white--text title font-weight-light"
+                                class="white--text subheading font-weight-light"
                                 v-bind:href="dialog.button.url"
                                 target="_blank"
                         >{{ dialog.button.title }}
@@ -94,7 +93,7 @@
                         </v-btn>
                         <v-spacer></v-spacer>
                         <v-btn
-                                class="white--text"
+                                class="white--text subheading"
                                 color="teal"
                                 @click="dialog.visible = false"
                         >
@@ -103,23 +102,6 @@
                     </v-card-actions>
                 </v-card>
             </v-dialog>
-        </v-layout>
-
-        <v-layout
-                v-else-if="api_error"
-                row
-                wrap
-        >
-            <v-flex xs12>
-                <v-alert
-                        value="true"
-                        icon="fas fa-exclamation-triangle"
-                        color="red"
-                        class="title animated fadeInLeftBig"
-                >
-                    Despite sleeping on the couch most of the day, I will try to finds time to fix this.
-                </v-alert>
-            </v-flex>
         </v-layout>
 
         <v-layout
@@ -134,7 +116,7 @@
                         color="red"
                         class="title animated fadeInLeftBig"
                 >
-                    Despite sleeping on the couch most of the day, I will try to work to fill this page.
+                    Despite sleeping on the couch most of the day, I will try to finds time to fix this.
                 </v-alert>
             </v-flex>
         </v-layout>

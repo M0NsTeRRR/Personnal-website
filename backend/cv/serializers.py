@@ -62,8 +62,7 @@ class SkillItemSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'title',
-            'stars',
-            'link'
+            'stars'
         )
         depth = 1
 
@@ -98,6 +97,7 @@ class ExperienceSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'title',
+            'description',
             'url',
             'type'
         )
