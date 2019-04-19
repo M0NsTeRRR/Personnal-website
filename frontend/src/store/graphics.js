@@ -48,7 +48,7 @@ export default {
             'programming': 'fas fa-code',
             'systems': 'fas fa-server',
         };
-        return icon_list.hasOwnProperty(type.toLowerCase()) ? icon_list[type] : "";
+        return icon_list.hasOwnProperty(type.toLowerCase()) ? icon_list[type.toLowerCase()] : "";
     },
     get_iconBackground(type)
     {
@@ -59,6 +59,6 @@ export default {
             'github': 'black',
             'website': 'teal',
         };
-        return icon_list.hasOwnProperty(type.toLowerCase()) ? icon_list[type] : "";
+        return icon_list.hasOwnProperty(type.toLowerCase()) ? icon_list[type.toLowerCase()] : "";
     }
 }

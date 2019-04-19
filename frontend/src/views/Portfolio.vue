@@ -61,7 +61,7 @@
             </v-flex>
             <v-dialog
                     v-model="dialog.visible"
-                    width="500"
+                    width="700"
             >
                 <v-card>
                     <v-card-title
@@ -141,58 +141,7 @@
                     url: ''
                 },
                 visible: false
-            },
-            test: [
-                {
-                    img: '',
-                    title: 'Ludovic-website',
-                    buttons: [
-                        {id: 0, name: 'Github', href: 'https://github.com/lyon-esport/SwitchConfGenerator', icon: 'fab fa-github', color_btn_content: 'white--text', color_btn_background: 'black'}
-                    ]
-                },
-                {
-                    img: '',
-                    title: 'SwitchConfGenerator',
-                    buttons: [
-                        {id: 0, name: 'Github', href: 'https://github.com/lyon-esport/SwitchConfGenerator', icon: 'fab fa-github', color_btn_content: 'white--text', color_btn_background: 'black'}
-                    ]
-                },
-                {
-                    img: '',
-                    title: 'AdminAFK-registration',
-                    buttons: [
-                        {id: 0, name: 'Github', href: 'https://github.com/lyon-esport/AdminAFK-registration', icon: 'fab fa-github', color_btn_content: 'white--text', color_btn_background: 'black'}
-                    ]
-                },
-                {
-                    img: '',
-                    title: 'Supervision',
-                    buttons: [
-                        {id: 0, name: 'Github', href: 'https://github.com/lyon-esport/Supervision', icon: 'fab fa-github', color_btn_content: 'white--text', color_btn_background: 'black'}
-                    ]
-                },
-                {
-                    img: '',
-                    title: 'Monitor-VRRP',
-                    buttons: [
-                        {id: 0, name: 'Github', href: 'https://github.com/lyon-esport/Monitor-VRRP', icon: 'fab fa-github', color_btn_content: 'white--text', color_btn_background: 'black'}
-                    ]
-                },
-                {
-                    img: '',
-                    title: 'Discord-BOT-AdminAFK',
-                    buttons: [
-                        {id: 0, name: 'Github', href: 'https://github.com/lyon-esport/Discord-BOT-AdminAFK', icon: 'fab fa-github', color_btn_content: 'white--text', color_btn_background: 'black'}
-                    ]
-                },
-                {
-                    img: '',
-                    title: 'AdminAFK',
-                    buttons: [
-                        {id: 0, name: 'Github', href: 'https://github.com/lyon-esport/AdminAFK', icon: 'fab fa-github', color_btn_content: 'white--text', color_btn_background: 'black'}
-                    ]
-                }
-            ]
+            }
         }),
         mounted () {
             this.getProjects(this.person_id)

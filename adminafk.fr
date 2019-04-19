@@ -46,7 +46,7 @@ server {
     }
 
     location / {
-        return 301 /admin;
+        return 301 /admin/;
     }
 
 

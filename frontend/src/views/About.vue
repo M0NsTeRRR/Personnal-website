@@ -28,45 +28,90 @@
                     <span v-if="person.presentation">
                         <div class="display-1 font-weight-light">Presentation</div>
                         <br>
-                        <div class="title font-weight-light animated bounceInLeft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ person.presentation }}</div>
+                        <v-card>
+                            <v-card-title>
+                                <div class="title font-weight-light animated bounceInLeft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ person.presentation }}</div>
+                            </v-card-title>
+                        </v-card>
                         <br>
                     </span>
                     <span v-if="experiences">
                         <div class="display-1 font-weight-light">Work experience</div>
-                        <div
-                                v-for="work in render_experience('work')"
-                                v-bind:key="work.id"
-                        >
-                            <v-btn flat small class="title font-weight-light text-capitalize animated bounceInLeft" v-bind:href="work.url" target="_blank">- {{ work.title }}</v-btn>
-                        </div>
+                        <br>
+                        <v-expansion-panel>
+                            <v-expansion-panel-content
+                                    v-for="work in render_experience('work')"
+                                    v-bind:key="work.id"
+                                    class="animated bounceInLeft"
+                            >
+                                <template v-slot:actions>
+                                    <v-icon color="teal">fas fa-plus</v-icon>
+                                </template>
+                                <template v-slot:header>
+                                    <div>{{ work.title }}</div>
+                                </template>
+                                <v-card>
+                                    <v-card-text class="grey lighten-3">{{ work.description }}</v-card-text>
+                                    <v-card-text v-if="work.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="work.url" target="_blank">Website</v-btn></v-card-text>
+                                </v-card>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
                         <br>
                         <div class="display-1 font-weight-light">Volonteer experience</div>
-                        <div
-                                v-for="volunteer in render_experience('volunteer')"
-                                v-bind:key="volunteer.id"
-                        >
-                            <v-btn flat small class="title font-weight-light text-capitalize animated bounceInLeft" v-bind:href="volunteer.url" target="_blank">- {{ volunteer.title }}</v-btn>
-                        </div>
+                        <br>
+                        <v-expansion-panel>
+                            <v-expansion-panel-content
+                                    v-for="work in render_experience('volunteer')"
+                                    v-bind:key="work.id"
+                                    class="animated bounceInLeft"
+                            >
+                                <template v-slot:actions>
+                                    <v-icon color="teal">fas fa-plus</v-icon>
+                                </template>
+                                <template v-slot:header>
+                                    <div>{{ work.title }}</div>
+                                </template>
+                                <v-card>
+                                    <v-card-text class="grey lighten-3">{{ work.description }}</v-card-text>
+                                    <v-card-text v-if="work.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="work.url" target="_blank">Website</v-btn></v-card-text>
+                                </v-card>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
                         <br>
                     </span>
                     <span v-if="languages">
                         <div class="display-1 font-weight-light">Language</div>
-                        <div
-                                v-for="language in languages"
-                                v-bind:key="language.id"
-                        >
-                            <v-btn flat small class="title font-weight-light text-capitalize animated bounceInLeft">- {{ language.name }} {{ render_optionnalField('(', language.level, ')') }}</v-btn>
-                        </div>
+                        <br>
+                        <v-card>
+                            <v-card-title
+                                    v-for="language in languages"
+                                    v-bind:key="language.id"
+                            >
+                                <div class="title font-weight-light text-capitalize animated bounceInLeft">- {{ language.name }} {{ render_optionnalField('(', language.level, ')') }}</div>
+                            </v-card-title>
+                        </v-card>
                         <br>
                     </span>
                     <span v-if="educations">
                         <div class="display-1 font-weight-light">Education</div>
-                        <div
-                                v-for="education in educations"
-                                v-bind:key="education.id"
-                        >
-                            <v-btn flat small class="title font-weight-light text-capitalize animated bounceInLeft" v-bind:href="education.url" target="_blank">- {{ education.title }} {{ render_optionnalField('(', education.subtitle, ')') }}</v-btn>
-                        </div>
+                        <br>
+                        <v-expansion-panel>
+                            <v-expansion-panel-content
+                                    v-for="education in educations"
+                                    v-bind:key="education.id"
+                                    class="animated bounceInLeft"
+                            >
+                                <template v-slot:actions>
+                                    <v-icon color="teal">fas fa-plus</v-icon>
+                                </template>
+                                <template v-slot:header>
+                                    <div>{{ education.title }}</div>
+                                </template>
+                                <v-card>
+                                    <v-card-text v-if="education.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="education.url" target="_blank">Website</v-btn></v-card-text>
+                                </v-card>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
                         <br>
                     </span>
                     <br>
@@ -99,6 +144,8 @@
                                             v-for="(skillTheme, indexTheme) in skill.skillThemes"
                                             v-bind:key="indexTheme"
                                     >
+                                        <v-spacer></v-spacer>
+                                        <div class="headline font-weight-light text-xs-center">{{ skillTheme.title }}</div>
                                         <v-chip
                                                 v-for="(item, indexItem) in skillTheme.skillItems"
                                                 v-bind:key="indexItem"
@@ -179,73 +226,7 @@
             languages: null,
             skills: null,
             animation_about: true,
-            api_error: false,
-            actualPosition: {title: 'Student in Networks & Telecoms', url: 'https://www.iut-valence.fr/nos-formations/dut/dut-reseaux-et-telecoms-247966.kjsp'},
-            workExperiences: [
-                {title: 'Esports Micro entrepreneur', url: 'https://www.societe.com/societe/ludovic-ortega-832968283.html'},
-                {title: 'Order picker Burger King', url: 'https://www.burgerking.fr/'}
-            ],
-            volonteerExperiences: [
-                {title: 'Tech sys & networks Lyon e-Sport', url: 'https://www.lyon-esport.fr/'},
-                {title: 'Head-Admin VaKarM', url: 'https://www.vakarm.net/'},
-                {title: 'Tech support Faceit', url: 'https://www.faceit.com/'},
-                {title: 'Head-Admin FDJ eSport', url: 'https://www.fdjesport.fr/'}
-            ],
-            technical_skills: {
-                networks: {
-                    icon: 'fas fa-ethernet',
-                    technologies: [
-                        {name: 'TCP/IP', stars: 5},
-                        {name: 'LAN Routing', stars: 5},
-                        {name: 'NAT', stars: 5},
-                        {name: 'VLAN', stars: 5},
-                        {name: 'ACL / Firewall', stars: 3},
-                        {name: 'Wi-Fi', stars: 3},
-                        {name: 'IPBX', stars: 3},
-                        {name: 'VPN', stars: 2},
-                        {name: 'SDN', stars: 1},
-                        {name: 'MPLS', stars: 1}
-                    ]
-                },
-                programming: {
-                    icon: 'fas fa-code',
-                    language: [
-                        {name: 'PHP', stars: 5},
-                        {name: 'Python', stars: 5},
-                        {name: 'Html', stars: 5},
-                        {name: 'JavaScript', stars: 3},
-                        {name: 'Bash', stars: 3},
-                        {name: 'CSS', stars: 2},
-                        {name: 'C', stars: 2},
-                        {name: 'Pascal', stars: 2},
-                        {name: 'SQL', stars: 2},
-                        {name: 'PowerShell', stars: 2},
-                        {name: 'Java & Android', stars: 2}
-                    ],
-                    framework: [
-                        {name: 'BootStrap', language: ['CSS', 'JavaScript'], stars: 5},
-                        {name: 'Bulma', language: ['CSS'], stars: 5},
-                        {name: 'Flask', language: ['Python'], stars: 3},
-                        {name: 'JQuery', language: ['JavaScript'], stars: 2},
-                        {name: 'Django', language: ['Python'], stars: 2},
-                        {name: 'VueJS', language: ['JavaScript'], stars: 2},
-                        {name: 'Vuetify', language: ['CSS', 'JavaScript'], stars: 2}
-                    ]
-                },
-                systems: {
-                    icon: 'fas fa-server',
-                    technologies: [
-                        {name: 'Linux', stars: 5},
-                        {name: 'DHCP / DNS', stars: 5},
-                        {name: 'Apache/Nginx', stars: 4},
-                        {name: 'ESXI', stars: 3},
-                        {name: 'Windows / Windows servers', stars: 3},
-                        {name: 'Dockers', stars: 3},
-                        {name: 'Grafana / Centreon', stars: 3},
-                        {name: 'Ansible', stars: 1}
-                    ]
-                },
-            }
+            api_error: false
         }),
         mounted () {
             this.getPerson(this.person_id);
