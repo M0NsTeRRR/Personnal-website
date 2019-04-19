@@ -13,6 +13,7 @@ This is my own website :)
 
 - Nginx
 - Docker
+- Certbot
 
 # Install
 
@@ -48,10 +49,22 @@ This is my own website :)
     * ludovic-ortega.adminafk.fr
 
 - Access to API :
-    * admin.adminafk.fr
+    * api.adminafk.fr
     
 - Access to admin :
     * admin.adminafk.fr
+
+# Dev
+
+#### Frontend
+
+In frontend directory run `npm run serve`
+
+#### Backend
+
+In backend/config/settings/__init__.py change import `production` to `dev`
+
+In backend directory run `python3 manage.py runserver`
 
 # Licence
 

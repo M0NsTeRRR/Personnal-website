@@ -45,7 +45,7 @@
                                     class="animated bounceInLeft"
                             >
                                 <template v-slot:actions>
-                                    <v-icon color="teal">fas fa-plus</v-icon>
+                                    <v-icon color="teal">fas fa-chevron-down</v-icon>
                                 </template>
                                 <template v-slot:header>
                                     <div class="title font-weight-light">{{ work.title }}</div>
@@ -66,7 +66,7 @@
                                     class="animated bounceInLeft"
                             >
                                 <template v-slot:actions>
-                                    <v-icon color="teal">fas fa-plus</v-icon>
+                                    <v-icon color="teal">fas fa-chevron-down</v-icon>
                                 </template>
                                 <template v-slot:header>
                                     <div class="title font-weight-light">{{ work.title }}</div>
@@ -102,7 +102,7 @@
                                     class="animated bounceInLeft"
                             >
                                 <template v-slot:actions>
-                                    <v-icon color="teal">fas fa-plus</v-icon>
+                                    <v-icon color="teal">fas fa-chevron-down</v-icon>
                                 </template>
                                 <template v-slot:header>
                                     <div class="title font-weight-light">{{ education.title }}</div>
