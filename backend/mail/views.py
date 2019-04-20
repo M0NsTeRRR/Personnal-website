@@ -61,8 +61,6 @@ class MailViewset(APIView):
                                "Message : \n" + form.cleaned_data['message']
                 send_mail('Contact form ludovic-ortega.adminafk.fr', message_send, form.cleaned_data['email'], [os.environ['EMAIL_RECEIVER']])
                 send_mail('Message sent on ludovic-ortega.adminafk.fr', "If your request can't wait, you can also reach me on my social media accounts.\n\n" + message_send, form.cleaned_data['email'], [form.cleaned_data['email']])
-            except BadHeaderError:
-                return Response({"success": False, "message": "Invalid header found."})
             except Exception as e:
                 return Response({"success": False, "message": "Something wrent wrong. Sorry for inconveniance, try again later."})
             return Response({"success": True, "message": "Success ! Your Email has been sent, if your request can't wait, you can also reach me on my social media accounts."})
