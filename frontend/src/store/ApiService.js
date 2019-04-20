@@ -59,5 +59,13 @@ export default {
     },
     getSocials(id) {
         return Api().get('cv/person/' + id + '/socials/')
+    },
+    postMail(name, email, subject, message) {
+        return Api().post('mail/', {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message
+        })
     }
 }

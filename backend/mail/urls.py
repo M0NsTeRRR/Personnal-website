@@ -35,23 +35,9 @@
 # termes.
 # ----------------------------------------------------------------------------
 
-import os
+from django.urls import path
+from .views import MailViewset
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'admin.adminafk.fr', 'api.adminafk.fr']
-
-
-ROOT_URLCONF = 'config.urls.production'
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
-
-# Redirect http to https
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
+urlpatterns = [
+    path('', MailViewset.as_view(), name='mail'),
+]

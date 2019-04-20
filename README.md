@@ -31,6 +31,10 @@ This is my own website :)
 
 - Create this directories (must be empty) `/var/www/adminafk.fr/static`
 - Put the secret key on the dockerfile `ENV SECRET_KEY=MY_SECRET_KEY`
+- Put the gmail email and the gmail password of your mail sender :
+    - `ENV SENDER_GMAIL_USER SENDER_GMAIL_USER`
+    - `ENV SENDER_GMAIL_PASSWORD SENDER_GMAIL_PASSWORD`
+- Put the email who will receive emails `ENV RECEIVER_EMAIL RECEIVER_EMAIL`
 - Build the container `docker build -t backend .`
 - Deploy the container `docker run -d --name backend --restart=always -p 8000:8000 -v /var/www/adminafk.fr/static:/app/backend/static backend`
 - Collect static files `docker exec -it backend python3 manage.py collectstatic`

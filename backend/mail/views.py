@@ -37,21 +37,30 @@
 
 import os
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.core.mail import BadHeaderError, send_mail
+
+from .forms import MailForm
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'admin.adminafk.fr', 'api.adminafk.fr']
+class MailViewset(APIView):
+    def post(self, request, format=None):
+        """
+        Create and send an email
+        """
 
+        form = MailForm(request.POST)
 
-ROOT_URLCONF = 'config.urls.production'
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
-
-# Redirect http to https
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
+        if form.is_valid():
+            try:
+                message_send = "Name : " + form.cleaned_data['name'] + "\n" \
+                               "From : " + form.cleaned_data['email'] + "\n" \
+                               "Subject : " + form.cleaned_data['subject'] + "\n\n" \
+                               "Message : \n" + form.cleaned_data['message']
+                send_mail('Contact form ludovic-ortega.adminafk.fr', message_send, form.cleaned_data['email'], [os.environ['RECEIVER_EMAIL']])
+            except BadHeaderError:
+                return Response({"success": False, "message": "Invalid header found"})
+            return Response({"success": True, "message": ""})
+        else:
+            return Response({"success": False, "message": "Make sure all fields are entered and valid."})

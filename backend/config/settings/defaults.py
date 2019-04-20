@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'nested_admin',
 
     'cv',
+    'mail',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +163,12 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ALLOW_METHODS = (
     'GET',
 )
+
+# Mail settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ['SENDER_GMAIL_USER']
+EMAIL_HOST_PASSWORD = os.environ['SENDER_GMAIL_PASSWORD']
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

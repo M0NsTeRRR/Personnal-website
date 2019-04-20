@@ -35,23 +35,16 @@
 # termes.
 # ----------------------------------------------------------------------------
 
-import os
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+from django import forms
+from django.core.validators import validate_email
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'admin.adminafk.fr', 'api.adminafk.fr']
+class MailForm(forms.Form):
+    name = forms.CharField(min_length=1, max_length=50, required=True)
+    email = forms.EmailField(required=True)
+    subject = forms.CharField(min_length=1, max_length=50, required=True)
+    message = forms.CharField(min_length=1, max_length=2000, widget=forms.Textarea, required=True)
 
-
-ROOT_URLCONF = 'config.urls.production'
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
-
-# Redirect http to https
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
+    def validate(self, value):
+        super().validate(value)
+        validate_email(email)

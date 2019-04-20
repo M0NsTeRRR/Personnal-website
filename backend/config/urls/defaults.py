@@ -42,5 +42,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/cv/', include('cv.urls')),
+    path('api/mail/', include('mail.urls')),
     path('nested_admin/', include('nested_admin.urls')),
 ]
