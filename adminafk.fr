@@ -16,17 +16,6 @@ server {
         proxy_set_header Host $host;
         proxy_redirect off;
     }
-
-
-
-
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/adminafk.fr/fullchain.pem; # managed by $
-    ssl_certificate_key /etc/letsencrypt/live/adminafk.fr/privkey.pem; # managed b$
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
-
 }
 
 server {
@@ -48,57 +37,4 @@ server {
     location / {
         return 301 /admin/;
     }
-
-
-
-
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/adminafk.fr/fullchain.pem; # managed by $
-    ssl_certificate_key /etc/letsencrypt/live/adminafk.fr/privkey.pem; # managed b$
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
-
-}
-
-
-server {
-    if ($host = ludovic-ortega.adminafk.fr) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-    if ($host = adminafk.fr) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-
-    server_name adminafk.fr ludovic-ortega.adminafk.fr;
-    listen 80;
-    return 404; # managed by Certbot
-
-
-
-}
-
-server {
-    if ($host = api.adminafk.fr) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-    if ($host = admin.adminafk.fr) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-
-    server_name admin.adminafk.fr api.adminafk.fr;
-    listen 80;
-    return 404; # managed by Certbot
-
-
-
-
 }

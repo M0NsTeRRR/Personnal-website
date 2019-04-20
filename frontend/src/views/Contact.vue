@@ -119,10 +119,16 @@
                     this.mail_response.message = response.data.message;
                     this.mail_response.show = true;
                     this.loading = false;
-                    this.$refs.form.reset()
+                    if(this.mail_response.success === true)
+                    {
+                        this.$refs.form.reset()
+                    }
                 }
                 catch (e) {
-                    //
+                    this.loading = false;
+                    this.mail_response.success = false;
+                    this.mail_response.message = "Something wrent wrong. Sorry for inconveniance, try again later.";
+                    this.mail_response.show = true;
                 }
             }
         }
