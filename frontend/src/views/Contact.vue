@@ -4,6 +4,21 @@
         <br><br><br>
         <v-layout>
             <v-flex offset-lg2 lg8 offset-md1 md10 xs12>
+                <v-snackbar
+                        v-model="mail_response.show"
+                        v-bind:timeout="10000"
+                        v-bind:top="true"
+                        v-bind:color="mail_response.success ? 'success' : 'error'"
+                        v-bind:multi-line="true"
+                >
+                    {{ mail_response.message }}
+                    <v-btn
+                            flat
+                            @click="mail_response.show = false"
+                    >
+                        <v-icon>fas fa-times</v-icon>
+                    </v-btn>
+                </v-snackbar>
                 <v-form
                         ref="form"
                         v-model="valid"
@@ -34,6 +49,7 @@
                                 color="teal"
                                 class="font-weight-light title white--text animated bounceInUp"
                                 v-bind:disabled="!valid"
+                                v-bind:loading="loading"
                                 @click="validate"
                         >
                             Submit
@@ -56,6 +72,12 @@
         data: () => ({
             animation_contact: true,
             valid : true,
+            loading: false,
+            mail_response: {
+                show: false,
+                success: true,
+                message: 'No message'
+            },
             name: '',
             nameRules: [
                 v => !!v || 'Name is required',
@@ -74,7 +96,7 @@
             message: '',
             messageRules: [
                 v => !!v || 'Message is required',
-                v => /^.{1,2000}$/.test(v) || 'Message must be valid (1-2000 characters)'
+                v => /^.{1,2000}$/m.test(v) || 'Message must be valid (1-2000 characters)'
             ],
             fields: [
                 {icon: 'fas fa-user', name: 'name', label: 'Name', type: 'v-text-field', animation: 'animated bounceInLeft', rules: 'nameRules'},
@@ -86,17 +108,21 @@
         methods: {
             validate () {
                 if (this.$refs.form.validate()) {
-                    this.snackbar = true;
+                    this.loading = true;
                     this.postMail(this.name, this.email, this.subject, this.message);
                 }
             },
             async postMail(name, email, subject, message) {
                 try {
                     const response = await ApiService.postMail(name, email, subject, message);
-                    this.mail_response = response.data;
+                    this.mail_response.success = response.data.success;
+                    this.mail_response.message = response.data.message;
+                    this.mail_response.show = true;
+                    this.loading = false;
+                    this.$refs.form.reset()
                 }
                 catch (e) {
-                    this.mail_response = "ERROR";
+                    //
                 }
             }
         }

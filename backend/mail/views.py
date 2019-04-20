@@ -42,6 +42,7 @@ from rest_framework.response import Response
 from django.core.mail import BadHeaderError, send_mail
 
 from .forms import MailForm
+import json
 
 
 class MailViewset(APIView):
@@ -50,7 +51,7 @@ class MailViewset(APIView):
         Create and send an email
         """
 
-        form = MailForm(request.POST)
+        form = MailForm(json.loads(request.body.decode('utf-8')))
 
         if form.is_valid():
             try:
@@ -60,7 +61,9 @@ class MailViewset(APIView):
                                "Message : \n" + form.cleaned_data['message']
                 send_mail('Contact form ludovic-ortega.adminafk.fr', message_send, form.cleaned_data['email'], [os.environ['RECEIVER_EMAIL']])
             except BadHeaderError:
-                return Response({"success": False, "message": "Invalid header found"})
-            return Response({"success": True, "message": ""})
+                return Response({"success": False, "message": "Invalid header found."})
+            except Exception as e:
+                return Response({"success": False, "message": "Something wrent wrong. Sorry for inconveniance, try again later."})
+            return Response({"success": True, "message": "Success ! Your Email has been sent, if your request can't wait, you can also reach me on my social media accounts."})
         else:
             return Response({"success": False, "message": "Make sure all fields are entered and valid."})

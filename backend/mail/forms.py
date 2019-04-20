@@ -47,4 +47,4 @@ class MailForm(forms.Form):
 
     def validate(self, value):
         super().validate(value)
-        validate_email(email)
+        validate_email(self.email)
