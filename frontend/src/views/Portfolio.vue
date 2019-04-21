@@ -16,12 +16,13 @@
                     md4
             >
                 <v-hover>
-                    <v-card color="teal lighten-5">
+                    <v-card>
                         <v-img
                                 v-bind:src="project.img"
                                 v-bind:alt="project.title"
                                 aspect-ratio="2"
                         ></v-img>
+                        <v-divider></v-divider>
                         <v-divider></v-divider>
                         <v-card-title primary-title>
                             <div>
