@@ -162,6 +162,7 @@ CORS_ORIGIN_WHITELIST = (
 )
 CORS_ALLOW_METHODS = (
     'GET',
+    'POST',
 )
 
 # Mail settings

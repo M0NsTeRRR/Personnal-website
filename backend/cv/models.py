@@ -106,6 +106,8 @@ class Experience(models.Model):
     description = models.TextField(max_length=1000)
     url = models.URLField(max_length=200, blank=True)
     type = models.CharField(max_length=100, choices=TYPE_CHOICE, default='work')
+    start_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.title

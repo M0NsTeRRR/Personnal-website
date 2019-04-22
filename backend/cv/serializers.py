@@ -99,7 +99,9 @@ class ExperienceSerializer(serializers.ModelSerializer):
             'title',
             'description',
             'url',
-            'type'
+            'type',
+            'start_date',
+            'end_date'
         )
 
 

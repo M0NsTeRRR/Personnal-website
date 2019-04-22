@@ -48,7 +48,11 @@
                                     <v-icon color="teal">fas fa-chevron-down</v-icon>
                                 </template>
                                 <template v-slot:header>
-                                    <div class="title font-weight-light">{{ work.title }}</div>
+                                    <div class="title font-weight-light">
+                                        {{ work.title }}
+                                        <v-spacer></v-spacer>
+                                        <span class="subheading font-weight-light font-italic">{{ work.start_date }}{{ work.end_date ? ' - ' + work.end_date : ' - Present '}} ({{ render_duration_between_date(work.start_date, work.end_date) }})</span>
+                                    </div>
                                 </template>
                                 <v-card>
                                     <v-card-text class="grey lighten-3">{{ work.description }}</v-card-text>
@@ -61,19 +65,23 @@
                         <br>
                         <v-expansion-panel>
                             <v-expansion-panel-content
-                                    v-for="work in render_experience('volunteer')"
-                                    v-bind:key="work.id"
+                                    v-for="volunteer in render_experience('volunteer')"
+                                    v-bind:key="volunteer.id"
                                     class="animated bounceInLeft"
                             >
                                 <template v-slot:actions>
                                     <v-icon color="teal">fas fa-chevron-down</v-icon>
                                 </template>
                                 <template v-slot:header>
-                                    <div class="title font-weight-light">{{ work.title }}</div>
+                                    <div class="title font-weight-light">
+                                        {{ volunteer.title }}
+                                        <v-spacer></v-spacer>
+                                        <span class="subheading font-weight-light font-italic">{{ volunteer.start_date }}{{ volunteer.end_date ? ' - ' + volunteer.end_date : ' - Present '}} ({{ render_duration_between_date(volunteer.start_date, volunteer.end_date) }})</span>
+                                    </div>
                                 </template>
                                 <v-card>
-                                    <v-card-text class="grey lighten-3">{{ work.description }}</v-card-text>
-                                    <v-card-text v-if="work.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="work.url" target="_blank">Website</v-btn></v-card-text>
+                                    <v-card-text class="grey lighten-3">{{ volunteer.description }}</v-card-text>
+                                    <v-card-text v-if="volunteer.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="volunteer.url" target="_blank">Website</v-btn></v-card-text>
                                 </v-card>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
@@ -180,12 +188,11 @@
                                 color="teal"
                                 v-bind:href="person.cv_url"
                                 target="_blank"
-                                v-bind:download="render_cvFilename(person.name)"
-                        >Download CV
+                        >View my CV
                             <v-icon
                                     right
                                     medium>
-                                fas fa-file-download
+                                fas fa-eye
                             </v-icon>
                         </v-btn>
                     </div>
@@ -292,13 +299,38 @@
             {
                 return this.experiences.filter(experience => experience.type === type);
             },
-            render_cvFilename: function(name)
-            {
-                return name.replace(" ", "-") + "_CV";
-            },
             render_optionnalField: function(prefix, field, suffix)
             {
                 return field.length > 0 ? prefix + field + suffix : '';
+            },
+            render_duration_between_date: function (begin, end)
+            {
+                begin = new Date(begin);
+                end = end ? new Date(end) : new Date();
+
+                let duration = '';
+
+                const yy = end.getFullYear() - begin.getFullYear();
+                const mm = end.getMonth() - begin.getMonth();
+
+                if(yy > 0)
+                {
+                    duration = yy === 1 ? yy + ' year' : yy + ' years';
+                }
+
+                if(mm > 0)
+                {
+                    duration = duration.length > 0 ? duration + ' ' : '';
+                    duration = duration + (mm === 1 ? mm + ' month' : mm + ' months');
+                }
+
+                if(!duration)
+                {
+                    const dd = end.getDate() - begin.getDate() === 0 ? 1 : end.getDate() - begin.getDate();
+                    duration = dd === 1 ? dd + ' day' : dd + ' days';
+                }
+
+                return duration;
             }
         }
     }
