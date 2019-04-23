@@ -312,7 +312,7 @@
 
                 let yy = end.getFullYear() - begin.getFullYear();
                 let mm = end.getMonth() - begin.getMonth();
-                
+
                 yy = Math.sign(mm) === -1 ? yy -1 : yy;
                 mm = Math.abs(mm);
 
