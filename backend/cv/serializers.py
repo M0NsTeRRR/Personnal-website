@@ -112,6 +112,7 @@ class EducationSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'subtitle',
+            'date',
             'url'
         )
 

@@ -117,6 +117,7 @@ class Education(models.Model):
     person = models.ForeignKey(Person, related_name='educations', on_delete=models.CASCADE)
     title = models.CharField(max_length=100, blank=True)
     subtitle = models.CharField(max_length=100, blank=True)
+    date = models.DateField()
     url = models.URLField(max_length=200)
 
     def __str__(self):

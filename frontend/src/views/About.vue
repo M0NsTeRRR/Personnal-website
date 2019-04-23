@@ -113,7 +113,7 @@
                                     <v-icon color="teal">fas fa-chevron-down</v-icon>
                                 </template>
                                 <template v-slot:header>
-                                    <div class="title font-weight-light">{{ education.title }}</div>
+                                    <div class="title font-weight-light">{{ render_year(education.date) }} - {{ education.title }}</div>
                                 </template>
                                 <v-card>
                                     <v-card-text v-if="education.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="education.url" target="_blank">Website</v-btn></v-card-text>
@@ -310,8 +310,11 @@
 
                 let duration = '';
 
-                const yy = end.getFullYear() - begin.getFullYear();
-                const mm = end.getMonth() - begin.getMonth();
+                let yy = end.getFullYear() - begin.getFullYear();
+                let mm = end.getMonth() - begin.getMonth();
+                
+                yy = Math.sign(mm) === -1 ? yy -1 : yy;
+                mm = Math.abs(mm);
 
                 if(yy > 0)
                 {
@@ -331,6 +334,10 @@
                 }
 
                 return duration;
+            },
+            render_year: function(date)
+            {
+                return date.getFullYear();
             }
         }
     }
