@@ -314,7 +314,7 @@
                 let mm = end.getMonth() - begin.getMonth();
 
                 yy = Math.sign(mm) === -1 ? yy -1 : yy;
-                mm = Math.abs(mm);
+                mm = 12 - Math.abs(mm);
 
                 if(yy > 0)
                 {
@@ -337,7 +337,7 @@
             },
             render_year: function(date)
             {
-                return date.getFullYear();
+                return new Date(date).getFullYear();
             }
         }
     }
