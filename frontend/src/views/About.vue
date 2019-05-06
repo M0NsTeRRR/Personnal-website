@@ -314,7 +314,8 @@
                 let mm = end.getMonth() - begin.getMonth();
 
                 yy = Math.sign(mm) === -1 ? yy -1 : yy;
-                mm = 12 - Math.abs(mm);
+
+                mm = end.getFullYear() !== begin.getFullYear() ? 12 - Math.abs(mm) : mm;
 
                 if(yy > 0)
                 {
