@@ -36,7 +36,7 @@ This is my own website :)
 - Collect static files `docker exec -it backend python3 manage.py collectstatic`
 - Create a SuperAdmin for Admin : 
     * `docker exec -it backend /bin/sh`  
-    * `docker exec -it backend python3 manage.py createsuperuser`  
+    * `python3 manage.py createsuperuser`  
 
 #### Add infos
 
