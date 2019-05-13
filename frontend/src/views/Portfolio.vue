@@ -38,7 +38,7 @@
                                     class="white--text subheading font-weight-light"
                                     v-bind:href="project.link.url"
                                     target="_blank"
-                            >{{ project.link.title }}
+                            >{{ project.link.type }}
                                 <v-icon
                                         right
                                         medium
@@ -51,7 +51,7 @@
                                     v-if="project.description"
                                     color="teal"
                                     class="white--text"
-                                    @click.stop="show_dialog(project.link.title, get_icon(project.link.type), project.link.url, get_iconBackground(project.link.type), project.description)"
+                                    @click.stop="show_dialog(project)"
                                     fab
                             >
                                 <v-icon medium>fas fa-search</v-icon>
@@ -62,14 +62,14 @@
             </v-flex>
             <v-dialog
                     v-model="dialog.visible"
-                    width="700"
+                    width="900"
             >
                 <v-card>
                     <v-card-title
                             class="white--text display-1 teal"
                             primary-title
                     >
-                        Description
+                        {{ dialog.title }}
                     </v-card-title>
 
                     <v-card-text class="headline">
@@ -84,7 +84,7 @@
                                 class="white--text subheading font-weight-light"
                                 v-bind:href="dialog.button.url"
                                 target="_blank"
-                        >{{ dialog.button.title }}
+                        >{{ dialog.button.type }}
                             <v-icon
                                     right
                                     medium
@@ -99,6 +99,12 @@
                                 @click="dialog.visible = false"
                         >
                             Close
+                            <v-icon
+                                    right
+                                    medium
+                            >
+                                fas fa-times-circle
+                            </v-icon>
                         </v-btn>
                     </v-card-actions>
                 </v-card>
@@ -134,10 +140,11 @@
             projects: null,
             api_error: false,
             dialog: {
+                title: '',
                 description: '',
                 button: {
                     color : '',
-                    title : '',
+                    type : '',
                     icon : '',
                     url: ''
                 },
@@ -165,13 +172,14 @@
             {
                 return Graphics.get_iconBackground(type);
             },
-            show_dialog: function(title, icon, url, color, description)
+            show_dialog: function(project)
             {
-                this.dialog.button.title = title;
-                this.dialog.button.icon = icon;
-                this.dialog.button.url = url;
-                this.dialog.button.color = color;
-                this.dialog.description = description;
+                this.dialog.button.type = project.link.type;
+                this.dialog.button.icon = this.get_icon(project.link.type);
+                this.dialog.button.url = project.link.url;
+                this.dialog.button.color = this.get_iconBackground(project.link.type);
+                this.dialog.title = project.title;
+                this.dialog.description = project.description;
                 this.dialog.visible = true;
             }
         }
