@@ -40,6 +40,8 @@ import os
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 from .forms import MailForm
 import json
@@ -55,13 +57,12 @@ class MailViewset(APIView):
 
         if form.is_valid():
             try:
-                message_send = "Name : " + form.cleaned_data['name'] + "\n" \
-                               "From : " + form.cleaned_data['email'] + "\n" \
-                               "Subject : " + form.cleaned_data['subject'] + "\n\n" \
-                               "Message : \n" + form.cleaned_data['message']
-                send_mail('Contact form ludovic-ortega.adminafk.fr', message_send, os.environ['EMAIL_HOST_USER'], [os.environ['EMAIL_RECEIVER']])
-                send_mail('Message sent on ludovic-ortega.adminafk.fr', "If your request can't wait, you can also reach me on my social media accounts.\n\n" + message_send, os.environ['EMAIL_HOST_USER'], [form.cleaned_data['email']])
+                html_message = render_to_string('mail/mail_template.html', {'name': form.cleaned_data['name'], 'email': form.cleaned_data['email'], 'subject': form.cleaned_data['subject'], 'message': form.cleaned_data['message']})
+                plain_message = strip_tags(html_message)
+                send_mail('Contact form ludovic-ortega.adminafk.fr', plain_message, os.environ['EMAIL_HOST_USER'], [os.environ['EMAIL_RECEIVER']], html_message=html_message)
+                send_mail('Message sent on ludovic-ortega.adminafk.fr', plain_message, os.environ['EMAIL_HOST_USER'], [form.cleaned_data['email']], html_message=html_message)
             except Exception as e:
+                print(str(e))
                 return Response({"success": False, "message": "Something wrent wrong. Sorry for inconveniance, try again later."})
             return Response({"success": True, "message": "Success ! Your Email has been sent, if your request can't wait, you can also reach me on my social media accounts."})
         else:

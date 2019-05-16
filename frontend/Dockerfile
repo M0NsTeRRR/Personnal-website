@@ -45,7 +45,7 @@ RUN apk update
 # install git
 RUN apk add git
 
-# download supervision project
+# download website project
 RUN git clone https://github.com/M0NsTeRRR/website
 
 # copy file to /app/
