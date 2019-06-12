@@ -107,7 +107,7 @@ class PersonViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
         """
 
         person = self.get_object()
-        serializer = ProjectSerializer(person.projects.all(), many=True)
+        serializer = ProjectSerializer(person.projects.all().order_by('-pub_date'), many=True)
         return Response(serializer.data)
 
     @action(detail=True)
