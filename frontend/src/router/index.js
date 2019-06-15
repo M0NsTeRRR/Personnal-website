@@ -59,7 +59,7 @@ export default new Router({
     },
     {
       name: '404',
-      path: '/*',
+      path: '*',
       component: () => import("@/views/About")
     }
   ]
