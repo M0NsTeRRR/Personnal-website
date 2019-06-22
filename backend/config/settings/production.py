@@ -36,6 +36,8 @@
 # ----------------------------------------------------------------------------
 
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -50,3 +52,8 @@ ROOT_URLCONF = 'config.urls.production'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
 
+# init sentry
+sentry_sdk.init(
+    dsn=os.environ['SENTRY_DSN'],
+    integrations=[DjangoIntegration()]
+)

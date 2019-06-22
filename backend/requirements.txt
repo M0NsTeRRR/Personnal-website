@@ -6,6 +6,7 @@ Django==2.2.2
 django-cors-headers==3.0.2
 django-nested-admin==3.2.3
 djangorestframework==3.9.4
+gunicorn==19.9.0
 idna==2.8
 itypes==1.1.0
 Jinja2==2.10.1
@@ -13,8 +14,8 @@ MarkupSafe==1.1.1
 python-monkey-business==1.0.0
 pytz==2019.1
 requests==2.22.0
+sentry-sdk==0.9.1
 six==1.12.0
 sqlparse==0.3.0
 uritemplate==3.0.0
 urllib3==1.25.3
-gunicorn==19.9.0
