@@ -15,6 +15,9 @@ This is my own website :)
 
 - Python >= 3.6
 - Pip3
+- Node.js >= 8.9
+- npm
+- Vue CLI 3
 
 #### Frontend
 
