@@ -23,6 +23,8 @@ This is my own website :)
 
 In frontend/src/store/ApiConfig.js change `baseURL` of Axios request
 
+In frontend directory run `npm install`
+
 In frontend directory run `npm run serve`
 
 #### Backend
