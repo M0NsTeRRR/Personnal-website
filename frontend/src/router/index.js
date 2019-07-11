@@ -35,32 +35,32 @@
 // termes.
 // ----------------------------------------------------------------------------
 
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from "vue";
+import Router from "vue-router";
 
 Vue.use(Router);
 export default new Router({
   routes: [
     {
-      alias: ['/', '/index'],
-      name: 'About',
-      path: '/About',
+      alias: ["/", "/index"],
+      name: "About",
+      path: "/About",
       component: () => import("@/views/About")
     },
     {
-      name: 'Portfolio',
-      path: '/Portfolio',
+      name: "Portfolio",
+      path: "/Portfolio",
       component: () => import("@/views/Portfolio")
     },
     {
-      name: 'Contact',
-      path: '/Contact',
+      name: "Contact",
+      path: "/Contact",
       component: () => import("@/views/Contact")
     },
     {
-      name: '404',
-      path: '*',
+      name: "404",
+      path: "*",
       component: () => import("@/views/About")
     }
   ]
-})
+});

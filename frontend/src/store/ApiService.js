@@ -35,37 +35,37 @@
 // termes.
 // ----------------------------------------------------------------------------
 
-import Api from '@/store/ApiConfig'
+import api from "@/store/ApiConfig";
 
 
 export default {
     getPerson (id) {
-        return Api().get('cv/person/' + id + '/')
+        return api().get("cv/person/" + id + "/");
     },
     getExperiences(id) {
-        return Api().get('cv/person/' + id + '/experiences/')
+        return api().get("cv/person/" + id + "/experiences/");
     },
     getEducations(id) {
-        return Api().get('cv/person/' + id + '/educations/')
+        return api().get("cv/person/" + id + "/educations/");
     },
     getLanguages(id) {
-        return Api().get('cv/person/' + id + '/languages/')
+        return api().get("cv/person/" + id + "/languages/");
     },
     getSkills(id) {
-        return Api().get('cv/person/' + id + '/skills/')
+        return api().get("cv/person/" + id + "/skills/");
     },
     getProjects(id) {
-        return Api().get('cv/person/' + id + '/projects/')
+        return api().get("cv/person/" + id + "/projects/");
     },
     getSocials(id) {
-        return Api().get('cv/person/' + id + '/socials/')
+        return api().get("cv/person/" + id + "/socials/");
     },
     postMail(name, email, subject, message) {
-        return Api().post('mail/', {
+        return api().post("mail/", {
             name: name,
             email: email,
             subject: subject,
             message: message
-        })
+        });
     }
-}
+};

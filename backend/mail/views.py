@@ -48,6 +48,7 @@ import json
 
 
 class MailViewset(APIView):
+    @classmethod
     def post(self, request, format=None):
         """
         Create and send an email

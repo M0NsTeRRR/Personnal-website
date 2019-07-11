@@ -293,7 +293,7 @@
             },
             get_icon: function(type)
             {
-                return Graphics.get_icon(type);
+                return Graphics.getIcon(type);
             },
             render_experience: function(type)
             {

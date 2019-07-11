@@ -35,14 +35,14 @@
 // termes.
 // ----------------------------------------------------------------------------
 
-import axios from 'axios/index'
+import axios from "axios/index";
 
 export default() => {
     return axios.create({
-        baseURL: 'https://api.adminafk.fr/api/',
+        baseURL: "https://api.adminafk.fr/api/",
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            "Accept": "application/json",
+            "Content-Type": "application/json"
         }
-    })
-}
+    });
+};

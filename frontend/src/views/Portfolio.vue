@@ -166,11 +166,11 @@
             },
             get_icon: function(type)
             {
-                return Graphics.get_icon(type);
+                return Graphics.getIcon(type);
             },
             get_iconBackground: function(type)
             {
-                return Graphics.get_iconBackground(type);
+                return Graphics.getIconBackground(type);
             },
             show_dialog: function(project)
             {

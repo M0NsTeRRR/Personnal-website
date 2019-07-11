@@ -36,12 +36,12 @@
 // ----------------------------------------------------------------------------
 
 module.exports = {
-    chainWebpack: config => {
+    chainWebpack: (config) => {
         config.module
-            .rule('pdf')
+            .rule("pdf")
             .test(/\.pdf$/)
-            .use('url-loader')
-            .loader('url-loader')
-            .end()
+            .use("url-loader")
+            .loader("url-loader")
+            .end();
     }
-}
+};

@@ -36,29 +36,29 @@
 // ----------------------------------------------------------------------------
 
 export default {
-    get_icon (type){
-        const icon_list = {
-            'facebook': 'fab fa-facebook',
-            'twitter': 'fab fa-twitter',
-            'linkedin': 'fab fa-linkedin',
-            'github': 'fab fa-github',
-            'website': 'fas fa-globe',
+    getIcon (type){
+        const iconList = {
+            "facebook": "fab fa-facebook",
+            "twitter": "fab fa-twitter",
+            "linkedin": "fab fa-linkedin",
+            "github": "fab fa-github",
+            "website": "fas fa-globe",
 
-            'networks': 'fas fa-ethernet',
-            'programming': 'fas fa-code',
-            'systems': 'fas fa-server',
+            "networks": "fas fa-ethernet",
+            "programming": "fas fa-code",
+            "systems": "fas fa-server",
         };
-        return icon_list.hasOwnProperty(type.toLowerCase()) ? icon_list[type.toLowerCase()] : "";
+        return iconList.hasOwnProperty(type.toLowerCase()) ? iconList[type.toLowerCase()] : "";
     },
-    get_iconBackground(type)
+    getIconBackground(type)
     {
-        const icon_list = {
-            'facebook': 'blue darken-4',
-            'twitter': 'blue darken-1blue darken-4',
-            'linkedin': 'blue darken-3',
-            'github': 'black',
-            'website': 'teal',
+        const iconList = {
+            "facebook": "blue darken-4",
+            "twitter": "blue darken-1blue darken-4",
+            "linkedin": "blue darken-3",
+            "github": "black",
+            "website": "teal",
         };
-        return icon_list.hasOwnProperty(type.toLowerCase()) ? icon_list[type.toLowerCase()] : "";
+        return iconList.hasOwnProperty(type.toLowerCase()) ? iconList[type.toLowerCase()] : "";
     }
-}
+};

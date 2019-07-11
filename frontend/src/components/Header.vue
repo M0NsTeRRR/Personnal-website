@@ -46,10 +46,10 @@
         name: "Header",
         data: () => ({
             links: [
-                {name: 'About', url: '/About', icon: 'fas fa-address-card'},
-                {name: 'Portfolio', url: '/Portfolio', icon: 'fas fa-clipboard-list'},
-                {name: 'Contact', url: '/Contact', icon: 'fas fa-envelope'}
+                {name: "About", url: "/About", icon: "fas fa-address-card"},
+                {name: "Portfolio", url: "/Portfolio", icon: "fas fa-clipboard-list"},
+                {name: "Contact", url: "/Contact", icon: "fas fa-envelope"}
             ]
         })
-    }
+    };
 </script>

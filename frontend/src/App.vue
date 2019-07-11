@@ -11,10 +11,10 @@
   import Footer from "@/components/Footer";
 
   export default {
-    name: 'App',
+    name: "App",
     components: {
       Header,
       Footer
     }
-  }
+  };
 </script>

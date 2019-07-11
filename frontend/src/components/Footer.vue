@@ -17,7 +17,7 @@
                         target="_blank"
                         icon
                 >
-                    <v-icon medium>{{ get_icon(contact.type) }}</v-icon>
+                    <v-icon medium>{{ getIcon(contact.type) }}</v-icon>
                 </v-btn>
                  <v-btn
                         class="mx-3 white--text"
@@ -38,16 +38,16 @@
 </template>
 
 <script>
-    import ApiService from '@/store/ApiService'
-    import Graphics from '@/store/graphics'
+    import ApiService from "@/store/ApiService";
+    import Graphics from "@/store/graphics";
     export default {
         name: "Footer",
         data: () => ({
-            person_id: '1',
+            personId: "1",
             contacts: null
         }),
         mounted () {
-            this.getSocials(this.person_id)
+            this.getSocials(this.personId);
         },
         methods: {
             async getSocials(id) {
@@ -56,13 +56,13 @@
                     this.contacts = response.data;
                 }
                 catch (e) {
-                    this.api_error = true;
+                    //
                 }
             },
-            get_icon: function(type)
+            getIcon: function(type)
             {
-                return Graphics.get_icon(type);
+                return Graphics.getIcon(type);
             }
         }
-    }
+    };
 </script>
