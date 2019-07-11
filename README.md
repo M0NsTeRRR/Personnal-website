@@ -2,6 +2,8 @@ This is my own website :)
 
 # This tool uses :
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/43b2c47c6ab34d00ae4970b11b111156)](https://app.codacy.com/app/M0NsTeRRR/Personnal-website?utm_source=github.com&utm_medium=referral&utm_content=M0NsTeRRR/Personnal-website&utm_campaign=Badge_Grade_Dashboard)
+
 * [Django](https://twig.symfony.com/) - Python web framework
 * [Django REST framework](https://www.django-rest-framework.org/) - Python REST framework for Django
 * [Vue.js](https://vuejs.org/) - Progressive framework
