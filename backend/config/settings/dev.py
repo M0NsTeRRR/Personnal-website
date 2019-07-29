@@ -48,3 +48,6 @@ ROOT_URLCONF = 'config.urls.dev'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '=0h9vgq7-6^t4sgths@y$(*=h-b-rgm^0s19d4i!cs@wbmc-u8'
 
+
+# Django Rest Framework 3.10 deprecated the CoreAPI based schema generation (re-enable the CoreAPI schema generation)
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
