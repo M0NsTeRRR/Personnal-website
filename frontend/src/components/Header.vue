@@ -1,29 +1,35 @@
 <template>
-    <v-toolbar
-            class="teal title"
-    >
+    <v-toolbar class="teal title shrink" short>
+        <v-toolbar-title class="white--text font-weight-light subtitle-1">Ludovic Ortega</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items
-            class="hidden-sm-and-down"
-        >
+        <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
             <v-btn
                     v-for="(link, index) in links"
                     v-bind:key="index"
-                    flat
-                    class="white--text font-weight-light subheading"
+                    text
+                    class="white--text font-weight-light subtitle-1"
                     v-bind:to="link.url"
-            >{{ link.name }}
-                <v-icon medium right>{{ link.icon }}</v-icon>
+            >{{ link.name }}&nbsp;
+                <v-icon size="24px" right>{{ link.icon }}</v-icon>
             </v-btn>
         </v-toolbar-items>
-        <v-menu class="hidden-md-and-up text--white">
-            <v-toolbar-side-icon slot="activator"><v-icon medium color="white">fas fa-ellipsis-v</v-icon></v-toolbar-side-icon>
+        <v-menu v-if="$vuetify.breakpoint.smAndDown" class="text--white">
+            <template v-slot:activator="{ on }">
+                <v-btn
+                        dark
+                        icon
+                        v-on="on"
+                >
+                    <v-icon>fas fa-ellipsis-v</v-icon>
+                </v-btn>
+            </template>
+
             <v-list>
-                <v-list-tile
+                <v-list-item
                         v-for="(link, index) in links"
                         v-bind:key="index"
                 >
-                    <v-list-tile-content>
+                    <v-list-item-title>
                         <v-btn
                             class="white--text font-weight-light subheading"
                             v-bind:to="link.url"
@@ -32,10 +38,10 @@
                         >
                             {{ link.name }}
                             <v-spacer></v-spacer>
-                            <v-icon medium right>{{ link.icon }}</v-icon>
+                            <v-icon size="24px" right>{{ link.icon }}</v-icon>
                         </v-btn>
-                    </v-list-tile-content>
-                </v-list-tile>
+                    </v-list-item-title>
+                </v-list-item>
             </v-list>
         </v-menu>
     </v-toolbar>

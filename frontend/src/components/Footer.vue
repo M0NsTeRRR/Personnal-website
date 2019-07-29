@@ -1,12 +1,13 @@
 <template>
     <v-footer
             dark
-            height="145"
+            padless
+            bottom
     >
         <v-card
                 flat
                 tile
-                class="teal white--text text-xs-center flex"
+                class="teal white--text text-center flex"
         >
             <v-card-text>
                 <v-btn
@@ -17,14 +18,14 @@
                         target="_blank"
                         icon
                 >
-                    <v-icon medium>{{ getIcon(contact.type) }}</v-icon>
+                    <v-icon size="30px">{{ getIcon(contact.type) }}</v-icon>
                 </v-btn>
                  <v-btn
                         class="mx-3 white--text"
                         href="#/contact"
                         icon
                 >
-                    <v-icon medium>fas fa-envelope</v-icon>
+                    <v-icon size="30px">fas fa-envelope</v-icon>
                 </v-btn>
             </v-card-text>
 

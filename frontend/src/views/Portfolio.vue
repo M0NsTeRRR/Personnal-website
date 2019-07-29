@@ -1,6 +1,7 @@
 <template>
     <v-container>
-        <h1 class="font-weight-thin display-3 text-xs-center animated bounceInDown">Portfolio</h1>
+        <br>
+        <h1 class="font-weight-thin display-3 text-center animated bounceInDown">Portfolio</h1>
         <br><br><br>
         <v-layout
                 v-if="!api_error"
@@ -35,16 +36,11 @@
                         <v-card-actions>
                             <v-btn
                                     v-bind:color="get_iconBackground(project.link.type)"
-                                    class="white--text subheading font-weight-light"
+                                    class="white--text subtitle-1 font-weight-light"
                                     v-bind:href="project.link.url"
                                     target="_blank"
                             >{{ project.link.type }}
-                                <v-icon
-                                        right
-                                        medium
-                                >
-                                    {{ get_icon(project.link.type) }}
-                                </v-icon>
+                                <v-icon right size="24px">{{ get_icon(project.link.type) }}</v-icon>&nbsp;
                             </v-btn>
                             <v-spacer></v-spacer>
                             <v-btn
@@ -54,7 +50,7 @@
                                     @click.stop="show_dialog(project)"
                                     fab
                             >
-                                <v-icon medium>fas fa-search</v-icon>
+                                <v-icon size="24px">fas fa-search</v-icon>
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -72,7 +68,7 @@
                         {{ dialog.title }}
                     </v-card-title>
 
-                    <v-card-text class="headline">
+                    <v-card-text class="headline black--text">
                         {{ dialog.description }}
                     </v-card-text>
 
@@ -81,30 +77,20 @@
                     <v-card-actions>
                         <v-btn
                                 v-bind:color="dialog.button.color"
-                                class="white--text subheading font-weight-light"
+                                class="white--text subtitle-1 font-weight-light"
                                 v-bind:href="dialog.button.url"
                                 target="_blank"
                         >{{ dialog.button.type }}
-                            <v-icon
-                                    right
-                                    medium
-                            >
-                                {{ dialog.button.icon }}
-                            </v-icon>
+                            <v-icon right size="24px">{{ dialog.button.icon }}</v-icon>&nbsp;
                         </v-btn>
                         <v-spacer></v-spacer>
                         <v-btn
-                                class="white--text subheading"
+                                class="white--text subtitle-1"
                                 color="teal"
                                 @click="dialog.visible = false"
                         >
                             Close
-                            <v-icon
-                                    right
-                                    medium
-                            >
-                                fas fa-times-circle
-                            </v-icon>
+                            <v-icon right size="24px">fas fa-times-circle</v-icon>&nbsp;
                         </v-btn>
                     </v-card-actions>
                 </v-card>
@@ -127,6 +113,7 @@
                 </v-alert>
             </v-flex>
         </v-layout>
+        <br>
     </v-container>
 </template>
 

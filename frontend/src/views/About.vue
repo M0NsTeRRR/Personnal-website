@@ -3,7 +3,7 @@
         <br>
         <v-layout v-if="!api_error">
             <v-flex lg8 offset-lg2 sm10 offset-sm1 xs12 v-if="person">
-                <div class="text-xs-center">
+                <div class="text-center">
                     <div v-if="person.name" class="display-2 animated bounceInDown">&nbsp;{{ person.name }}</div>
                     <br>
                     <div v-if="person.nationality" class="title font-weight-light animated rollIn">&nbsp;&nbsp;Nationality : {{ person.nationality }}</div>
@@ -11,7 +11,7 @@
                     <div v-if="person.city_residence" class="title font-weight-light animated rollIn">&nbsp;&nbsp;City : {{ person.city_residence }}</div>
                 </div>
                 <br>
-                <div class="text-xs-center">
+                <div class="text-center">
                     <v-avatar
                             color="grey lighten-4"
                             size="200"
@@ -20,8 +20,8 @@
                     </v-avatar>
                 </div>
                 <br>
-                <div v-if="person.actual_position" class="text-xs-center">
-                    <div><v-btn flat small class="title font-weight-light text-capitalize animated rollIn" v-bind:href="person.actual_position.url" target="_blank">{{ person.actual_position.title }}</v-btn></div>
+                <div v-if="person.actual_position" class="text-center">
+                    <div><v-btn small text class="title font-weight-light text-capitalize animated rollIn" v-bind:href="person.actual_position.url" target="_blank">{{ person.actual_position.title }}</v-btn></div>
                 </div>
                 <br>
                 <div>
@@ -38,53 +38,47 @@
                     <span v-if="experiences">
                         <div class="display-1 font-weight-light">Work experience</div>
                         <br>
-                        <v-expansion-panel>
-                            <v-expansion-panel-content
+                        <v-expansion-panels>
+                            <v-expansion-panel
                                     v-for="work in render_experience('work')"
                                     v-bind:key="work.id"
                                     class="animated bounceInLeft"
                             >
-                                <template v-slot:actions>
-                                    <v-icon color="teal">fas fa-chevron-down</v-icon>
-                                </template>
-                                <template v-slot:header>
-                                    <div class="title font-weight-light">
-                                        {{ work.title }}
+                                <v-expansion-panel-header expand-icon="fas fa-chevron-down">
+                                    <div>
+                                        <span class="title font-weight-light font-weight-light">{{ work.title }}</span>
                                         <v-spacer></v-spacer>
-                                        <span class="subheading font-weight-light font-italic">{{ work.start_date }}{{ work.end_date ? ' - ' + work.end_date : ' - Present '}} ({{ render_duration_between_date(work.start_date, work.end_date) }})</span>
+                                        <span class="subtitle-1 font-italic font-weight-light">{{ work.start_date }}{{ work.end_date ? ' - ' + work.end_date : ' - Present '}} ({{ render_duration_between_date(work.start_date, work.end_date) }})</span>
                                     </div>
-                                </template>
-                                <v-card>
-                                    <v-card-text class="grey lighten-3">{{ work.description }}</v-card-text>
-                                    <v-card-text v-if="work.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="work.url" target="_blank">Website</v-btn></v-card-text>
-                                </v-card>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
+                                </v-expansion-panel-header>
+                                <v-expansion-panel-content class="grey lighten-3">
+                                    <br>{{ work.description }}
+                                    <div v-if="work.url" class="text-center"><br><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="work.url" target="_blank">Website</v-btn></div>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-expansion-panels>
                         <br>
-                        <div class="display-1 font-weight-light">Volonteer experience</div>
+                        <div class="display-1 font-weight-light">Volunteer experience</div>
                         <br>
-                        <v-expansion-panel>
-                            <v-expansion-panel-content
+                        <v-expansion-panels>
+                            <v-expansion-panel
                                     v-for="volunteer in render_experience('volunteer')"
                                     v-bind:key="volunteer.id"
                                     class="animated bounceInLeft"
                             >
-                                <template v-slot:actions>
-                                    <v-icon color="teal">fas fa-chevron-down</v-icon>
-                                </template>
-                                <template v-slot:header>
-                                    <div class="title font-weight-light">
-                                        {{ volunteer.title }}
+                                <v-expansion-panel-header expand-icon="fas fa-chevron-down">
+                                    <div>
+                                        <span class="title font-weight-light font-weight-light">{{ volunteer.title }}</span>
                                         <v-spacer></v-spacer>
-                                        <span class="subheading font-weight-light font-italic">{{ volunteer.start_date }}{{ volunteer.end_date ? ' - ' + volunteer.end_date : ' - Present '}} ({{ render_duration_between_date(volunteer.start_date, volunteer.end_date) }})</span>
+                                        <span class="subtitle-1 font-italic font-weight-light">{{ volunteer.start_date }}{{ volunteer.end_date ? ' - ' + volunteer.end_date : ' - Present '}} ({{ render_duration_between_date(volunteer.start_date, volunteer.end_date) }})</span>
                                     </div>
-                                </template>
-                                <v-card>
-                                    <v-card-text class="grey lighten-3">{{ volunteer.description }}</v-card-text>
-                                    <v-card-text v-if="volunteer.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="volunteer.url" target="_blank">Website</v-btn></v-card-text>
-                                </v-card>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
+                                </v-expansion-panel-header>
+                                <v-expansion-panel-content class="grey lighten-3">
+                                    <br>{{ volunteer.description }}
+                                    <div v-if="volunteer.url" class="text-center"><br><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="volunteer.url" target="_blank">Website</v-btn></div>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-expansion-panels>
                         <br>
                     </span>
                     <span v-if="languages">
@@ -103,30 +97,28 @@
                     <span v-if="educations">
                         <div class="display-1 font-weight-light">Education</div>
                         <br>
-                        <v-expansion-panel>
-                            <v-expansion-panel-content
+                        <v-expansion-panels>
+                            <v-expansion-panel
                                     v-for="education in educations"
                                     v-bind:key="education.id"
                                     class="animated bounceInLeft"
                             >
-                                <template v-slot:actions>
-                                    <v-icon color="teal">fas fa-chevron-down</v-icon>
-                                </template>
-                                <template v-slot:header>
-                                    <div class="title font-weight-light">{{ render_year(education.date) }} - {{ education.title }}</div>
-                                </template>
-                                <v-card>
-                                    <v-card-text v-if="education.url" class="grey lighten-3 text-xs-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="education.url" target="_blank">Website</v-btn></v-card-text>
-                                </v-card>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
+                                <v-expansion-panel-header expand-icon="fas fa-chevron-down">
+                                    <span class="title font-weight-light font-weight-light">{{ render_year(education.date) }} - {{ education.title }}</span>
+                                </v-expansion-panel-header>
+                                <v-expansion-panel-content class="grey lighten-3">
+                                    <br>{{ education.description }}
+                                    <div v-if="education.url" class="text-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="education.url" target="_blank">Website</v-btn></div>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-expansion-panels>
                         <br>
                     </span>
                     <br>
                     <v-tabs
                             v-if="skills"
                             centered
-                            color="teal"
+                            background-color="teal"
                             icons-and-text
                             dark
                     >
@@ -153,12 +145,13 @@
                                             v-bind:key="indexTheme"
                                     >
                                         <v-spacer></v-spacer>
-                                        <div class="headline font-weight-light text-xs-center">{{ skillTheme.title }}</div>
+                                        <div class="headline font-weight-light text-center">{{ skillTheme.title }}</div>
                                         <v-chip
                                                 v-for="(item, indexItem) in skillTheme.skillItems"
                                                 v-bind:key="indexItem"
                                                 color="teal"
                                                 text-color="white"
+                                                class="chip-margin"
                                         >
                                             <div class="title font-weight-light">{{ item.title }}</div>
                                             <v-rating
@@ -181,17 +174,15 @@
                     <br>
                     <div
                             v-if="person.cv_url"
-                            class="text-xs-center animated bounceInUp"
+                            class="text-center animated bounceInUp"
                     >
                         <v-btn
                                 class="white--text display-1 font-weight-light text-capitalize"
                                 color="teal"
                                 v-bind:href="person.cv_url"
                                 target="_blank"
-                        >View my CV
-                            <v-icon
-                                    right
-                                    medium>
+                        >CV&nbsp;
+                            <v-icon right size="24px">
                                 fas fa-eye
                             </v-icon>
                         </v-btn>
@@ -205,7 +196,7 @@
                 wrap
         >
             <v-flex xs12>
-                <h1 class="font-weight-thin display-3 text-xs-center animated bounceInDown">About</h1>
+                <h1 class="font-weight-thin display-3 text-center animated bounceInDown">About</h1>
                 <br><br><br>
                 <v-alert
                         value="true"
@@ -217,6 +208,7 @@
                 </v-alert>
             </v-flex>
         </v-layout>
+        <br>
     </v-container>
 </template>
 
@@ -343,3 +335,9 @@
         }
     }
 </script>
+
+<style>
+    .chip-margin {
+        margin: 8px;
+    }
+</style>

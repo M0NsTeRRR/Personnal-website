@@ -1,8 +1,9 @@
 <template>
     <v-container>
-        <h1 class="font-weight-thin display-3 text-xs-center animated bounceInDown">Contact</h1>
+        <br>
+        <h1 class="font-weight-thin display-3 text-center animated bounceInDown">Contact</h1>
         <br><br><br>
-        <v-layout>
+        <v-layout row wrap>
             <v-flex offset-lg2 lg8 offset-md1 md10 xs12>
                 <v-snackbar
                         v-model="mailResponse.show"
@@ -13,7 +14,7 @@
                 >
                     {{ mailResponse.message }}
                     <v-btn
-                            flat
+                            text
                             @click="mailResponse.show = false"
                     >
                         <v-icon>fas fa-times</v-icon>
@@ -32,7 +33,7 @@
                         <component
                                 v-bind:is="field.type"
                                 class="title animated fadeIn slow"
-                                outline
+                                outlined
                                 clearable
                                 clear-icon="fas fa-times-circle"
                                 v-bind:append-outer-icon="field.icon"
@@ -52,13 +53,14 @@
                                 v-bind:loading="loading"
                                 @click="validate"
                         >
-                            Submit
-                            <v-icon right>fas fa-paper-plane</v-icon>
+                            Submit&nbsp;&nbsp;
+                            <v-icon size="24px" right>fas fa-paper-plane</v-icon>&nbsp;
                         </v-btn>
                     </v-layout>
                 </v-form>
             </v-flex>
         </v-layout>
+        <br>
     </v-container>
 </template>
 
