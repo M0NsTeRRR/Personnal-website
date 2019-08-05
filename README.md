@@ -1,6 +1,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/43b2c47c6ab34d00ae4970b11b111156)](https://app.codacy.com/app/M0NsTeRRR/Personnal-website?utm_source=github.com&utm_medium=referral&utm_content=M0NsTeRRR/Personnal-website&utm_campaign=Badge_Grade_Dashboard)
-![Docker Automated build](https://img.shields.io/docker/cloud/automated/monsterrr/personnal-website?style=flat-square)
-![Docker Build Status](https://img.shields.io/docker/cloud/build/monsterrr/personnal-website?style=flat-square)
+[![Docker Automated build](https://img.shields.io/docker/cloud/automated/monsterrr/personnal-website?style=flat-square)](https://hub.docker.com/r/monsterrr/personnal-website)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/monsterrr/personnal-website?style=flat-square)](https://hub.docker.com/r/monsterrr/personnal-website)
 
 This is my own website :)
 
@@ -33,7 +33,7 @@ In frontend directory run `npm run serve`
 
 #### Backend
 
-In backend/config/settings/__init__.py change import `production` to `dev`
+In `backend/config/settings/__init__.py` change import `production` to `dev`
 
 In backend directory run `python3 manage.py runserver`
 

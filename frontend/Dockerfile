@@ -1,18 +1,12 @@
-FROM node:12.7-alpine as build
+FROM node:12.7-alpine
 
 LABEL maintainer="Ludovic Ortega mastership@hotmail.fr"
 
 # update package
 RUN apk update
 
-# install git
-RUN apk add git
-
-# download website project
-RUN git clone https://github.com/M0NsTeRRR/website
-
-# copy file to /app/
-RUN mkdir -p /app/frontend/ && mv website/frontend/* /app/frontend/
+# copy program and requirements
+COPY * /app/frontend/
 
 # set workdir
 WORKDIR /app/frontend/
