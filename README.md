@@ -1,8 +1,10 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/43b2c47c6ab34d00ae4970b11b111156)](https://app.codacy.com/app/M0NsTeRRR/Personnal-website?utm_source=github.com&utm_medium=referral&utm_content=M0NsTeRRR/Personnal-website&utm_campaign=Badge_Grade_Dashboard)
+![Docker Automated build](https://img.shields.io/docker/cloud/automated/monsterrr/personnal-website?style=flat-square)
+![Docker Build Status](https://img.shields.io/docker/cloud/build/monsterrr/personnal-website?style=flat-square)
+
 This is my own website :)
 
 # This tool uses :
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/43b2c47c6ab34d00ae4970b11b111156)](https://app.codacy.com/app/M0NsTeRRR/Personnal-website?utm_source=github.com&utm_medium=referral&utm_content=M0NsTeRRR/Personnal-website&utm_campaign=Badge_Grade_Dashboard)
 
 * [Django](https://twig.symfony.com/) - Python web framework
 * [Django REST framework](https://www.django-rest-framework.org/) - Python REST framework for Django
@@ -37,7 +39,7 @@ In backend directory run `python3 manage.py runserver`
 
 # Production
 
--> https://github.com/M0NsTeRRR/Personnal-docker-config
+-> https://github.com/M0NsTeRRR/Personnal-docker-config/tree/master/personnal-website
 
 # Licence
 
