@@ -309,6 +309,8 @@
 
                 mm = end.getFullYear() !== begin.getFullYear() ? 12 - Math.abs(mm) : mm;
 
+                mm = mm === 12 ? 0 : mm;
+
                 if(yy > 0)
                 {
                     duration = yy === 1 ? yy + ' year' : yy + ' years';
