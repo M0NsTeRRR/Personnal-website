@@ -35,6 +35,7 @@
 # termes.
 # ----------------------------------------------------------------------------
 
+from django.db.models import F
 from rest_framework import viewsets, mixins
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -77,7 +78,7 @@ class PersonViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
         """
 
         person = self.get_object()
-        serializer = ExperienceSerializer(person.experiences.all(), many=True)
+        serializer = ExperienceSerializer(person.experiences.all().order_by(F('end_date').desc(nulls_first=True)), many=True)
         return Response(serializer.data)
 
     @action(detail=True)
@@ -87,7 +88,7 @@ class PersonViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
         """
 
         person = self.get_object()
-        serializer = EducationSerializer(person.educations.all(), many=True)
+        serializer = EducationSerializer(person.educations.all().order_by('-date'), many=True)
         return Response(serializer.data)
 
     @action(detail=True)
@@ -107,7 +108,7 @@ class PersonViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
         """
 
         person = self.get_object()
-        serializer = ProjectSerializer(person.projects.all().order_by('-pub_date'), many=True)
+        serializer = ProjectSerializer(person.projects.all().order_by(F('pub_date').desc(nulls_first=True)), many=True)
         return Response(serializer.data)
 
     @action(detail=True)
