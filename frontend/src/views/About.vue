@@ -53,7 +53,7 @@
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content class="grey lighten-3">
                                     <br>{{ work.description }}
-                                    <div v-if="work.url" class="text-center"><br><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="work.url" target="_blank">Website</v-btn></div>
+                                    <div v-if="work.url" class="text-center"><br><v-btn text class="title font-weight-light text-capitalize teal white--text" v-bind:href="work.url" target="_blank">Website</v-btn></div>
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-expansion-panels>
@@ -75,7 +75,7 @@
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content class="grey lighten-3">
                                     <br>{{ volunteer.description }}
-                                    <div v-if="volunteer.url" class="text-center"><br><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="volunteer.url" target="_blank">Website</v-btn></div>
+                                    <div v-if="volunteer.url" class="text-center"><br><v-btn text class="title font-weight-light text-capitalize teal white--text" v-bind:href="volunteer.url" target="_blank">Website</v-btn></div>
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-expansion-panels>
@@ -108,7 +108,7 @@
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content class="grey lighten-3">
                                     <br>{{ education.description }}
-                                    <div v-if="education.url" class="text-center"><v-btn flat class="title font-weight-light text-capitalize teal white--text" v-bind:href="education.url" target="_blank">Website</v-btn></div>
+                                    <div v-if="education.url" class="text-center"><v-btn text class="title font-weight-light text-capitalize teal white--text" v-bind:href="education.url" target="_blank">Website</v-btn></div>
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-expansion-panels>
