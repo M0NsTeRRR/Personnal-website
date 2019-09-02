@@ -199,9 +199,8 @@
                 <h1 class="font-weight-thin display-3 text-center animated bounceInDown">About</h1>
                 <br><br><br>
                 <v-alert
-                        value="true"
+                        type="error"
                         icon="fas fa-exclamation-triangle"
-                        color="red"
                         class="title animated fadeInLeftBig"
                 >
                     Despite sleeping on the couch most of the day, I will try to finds time to fix this.
