@@ -46,6 +46,7 @@ from .models import (
     Education,
     Language,
     Project,
+    Homelab,
     Social,
     Person,
 )
@@ -58,6 +59,10 @@ class LinkAdmin(NestedTabularInline):
 class SocialAdmin(NestedTabularInline):
     model = Social
     extra = 1
+
+
+class HomelabAdmin(NestedTabularInline):
+    model = Homelab
 
 
 class ProjectAdmin(NestedTabularInline):
@@ -101,6 +106,7 @@ class PersonAdmin(NestedModelAdmin):
     model = Person
     inlines = [
         SocialAdmin,
+        HomelabAdmin,
         ProjectAdmin,
         LanguageAdmin,
         EducationAdmin,

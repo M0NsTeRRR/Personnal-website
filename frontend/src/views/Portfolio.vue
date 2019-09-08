@@ -19,10 +19,21 @@
                 <v-hover>
                     <v-card>
                         <v-img
-                                v-bind:src="project.img"
+                                v-bind:src="project.img === null ? '../assets/no_image_available.jpg' : project.img"
+                                v-on:error="projects[index].img = '../assets/no_image_available.jpg'"
                                 v-bind:alt="project.title"
                                 aspect-ratio="2"
-                        ></v-img>
+                        >
+                            <template v-slot:placeholder>
+                                <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                >
+                                    <v-progress-circular indeterminate color="teal"></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
                         <v-divider></v-divider>
                         <v-divider></v-divider>
                         <v-card-title primary-title>

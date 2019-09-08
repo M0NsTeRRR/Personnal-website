@@ -53,6 +53,11 @@ export default new Router({
       component: () => import("@/views/Portfolio")
     },
     {
+      name: "Homelab",
+      path: "/Homelab",
+      component: () => import("@/views/Homelab")
+    },
+    {
       name: "Contact",
       path: "/Contact",
       component: () => import("@/views/Contact")

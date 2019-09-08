@@ -46,6 +46,7 @@ from .models import (
     Language,
     Project,
     Social,
+    Homelab,
     Person,
 )
 
@@ -53,7 +54,12 @@ from .models import (
 class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link
-        fields = '__all__'
+        fields = (
+            'id',
+            'title',
+            'url',
+            'type'
+        )
 
 
 class SkillItemSerializer(serializers.ModelSerializer):
@@ -127,6 +133,16 @@ class LanguageSerializer(serializers.ModelSerializer):
         )
 
 
+class SocialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Social
+        fields = (
+            'id',
+            'type',
+            'url'
+        )
+
+
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
@@ -142,13 +158,13 @@ class ProjectSerializer(serializers.ModelSerializer):
         depth = 1
 
 
-class SocialSerializer(serializers.ModelSerializer):
+class HomelabSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Social
+        model = Homelab
         fields = (
             'id',
-            'type',
-            'url'
+            'rack',
+            'architecture'
         )
 
 

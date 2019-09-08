@@ -46,8 +46,9 @@ from .serializers import (
     LanguageSerializer,
     ExperienceSerializer,
     EducationSerializer,
-    ProjectSerializer,
     SocialSerializer,
+    ProjectSerializer,
+    HomelabSerializer,
     SkillSerializer,
 )
 
@@ -102,21 +103,31 @@ class PersonViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
         return Response(serializer.data)
 
     @action(detail=True)
-    def projects(self, request, pk=None):
-        """
-        Retrieve Projects of a Person
-        """
-
-        person = self.get_object()
-        serializer = ProjectSerializer(person.projects.all().order_by(F('pub_date').desc(nulls_first=True)), many=True)
-        return Response(serializer.data)
-
-    @action(detail=True)
     def socials(self, request, pk=None):
         """
         Retrieve Social Networks of a Person
         """
 
         person = self.get_object()
-        serializer = SocialSerializer(person.social.all(), many=True)
+        serializer = SocialSerializer(person.socials.all(), many=True)
+        return Response(serializer.data)
+
+    @action(detail=True)
+    def projects(self, request, pk=None):
+        """
+        Retrieve Projects of a Person
+        """
+
+        person = self.get_object()
+        serializer = ProjectSerializer(person.projects.all().order_by(F('pub_date').desc(nulls_first=True)), many=True, context={'request': request})
+        return Response(serializer.data)
+
+    @action(detail=True)
+    def homelab(self, request, pk=None):
+        """
+        Retrieve homelab of a Person
+        """
+
+        person = self.get_object()
+        serializer = HomelabSerializer(person.homelab, context={'request': request})
         return Response(serializer.data)

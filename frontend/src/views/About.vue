@@ -16,7 +16,22 @@
                             color="grey lighten-4"
                             size="200"
                     >
-                        <img v-if="person.photo" class="animated zoomIn" v-bind:src="person.photo" alt="photo">
+                        <v-img
+                                class="animated zoomIn"
+                                v-bind:src="person.photo === null ? '../assets/no_image_available.jpg' : person.photo"
+                                v-on:error="person.photo = '../assets/no_image_available.jpg'"
+                                alt="photo"
+                        >
+                            <template v-slot:placeholder>
+                                <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                >
+                                    <v-progress-circular indeterminate color="teal"></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
                     </v-avatar>
                 </div>
                 <br>
@@ -172,10 +187,7 @@
                         </v-tab-item>
                     </v-tabs>
                     <br>
-                    <div
-                            v-if="person.cv_url"
-                            class="text-center animated bounceInUp"
-                    >
+                    <div class="text-center animated bounceInUp">
                         <v-btn
                                 class="white--text display-1 font-weight-light text-capitalize"
                                 color="teal"

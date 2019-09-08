@@ -35,33 +35,40 @@
 // termes.
 // ----------------------------------------------------------------------------
 
-import api from "@/store/ApiConfig";
+import backend from "@/store/ApiConfig";
 
+const api_path = 'api/';
 
 export default {
-    getPerson (id) {
-        return api().get("cv/person/" + id + "/");
+    get(url) {
+        return backend().get(url);
+    },
+    getPerson(id) {
+        return backend().get(api_path + "cv/person/" + id + "/");
     },
     getExperiences(id) {
-        return api().get("cv/person/" + id + "/experiences/");
+        return backend().get(api_path + "cv/person/" + id + "/experiences/");
     },
     getEducations(id) {
-        return api().get("cv/person/" + id + "/educations/");
+        return backend().get(api_path + "cv/person/" + id + "/educations/");
     },
     getLanguages(id) {
-        return api().get("cv/person/" + id + "/languages/");
+        return backend().get(api_path + "cv/person/" + id + "/languages/");
     },
     getSkills(id) {
-        return api().get("cv/person/" + id + "/skills/");
+        return backend().get(api_path + "cv/person/" + id + "/skills/");
     },
     getProjects(id) {
-        return api().get("cv/person/" + id + "/projects/");
+        return backend().get(api_path + "cv/person/" + id + "/projects/");
     },
     getSocials(id) {
-        return api().get("cv/person/" + id + "/socials/");
+        return backend().get(api_path + "cv/person/" + id + "/socials/");
+    },
+    getHomelab(id) {
+        return backend().get(api_path + "cv/person/" + id + "/homelab/");
     },
     postMail(name, email, subject, message) {
-        return api().post("mail/", {
+        return backend().post("mail/", {
             name: name,
             email: email,
             subject: subject,

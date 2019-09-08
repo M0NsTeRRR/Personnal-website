@@ -54,6 +54,7 @@
             links: [
                 {name: "About", url: "/About", icon: "fas fa-address-card"},
                 {name: "Portfolio", url: "/Portfolio", icon: "fas fa-clipboard-list"},
+                {name: "Homelab", url: "/Homelab", icon: "fas fa-flask"},
                 {name: "Contact", url: "/Contact", icon: "fas fa-envelope"}
             ]
         })

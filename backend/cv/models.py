@@ -58,9 +58,9 @@ class Person(models.Model):
     nationality = models.CharField(max_length=100)
     city_residence = models.CharField(max_length=100)
     presentation = models.TextField(max_length=1000)
-    photo = models.URLField(max_length=200)
+    photo = models.ImageField(upload_to='cv/person', blank=True)
     actual_position = models.OneToOneField(Link, on_delete=models.PROTECT)
-    cv_url = models.URLField(max_length=200)
+    cv_url = models.FileField(upload_to='cv/person', blank=True)
 
     def __str__(self):
         return self.name
@@ -134,7 +134,7 @@ class Language(models.Model):
 
 
 class Social(models.Model):
-    person = models.ForeignKey(Person, related_name='social', on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, related_name='socials', on_delete=models.CASCADE)
     TYPE_CHOICE = (
         ('github', 'Github'),
         ('linkedin', 'Linkedin'),
@@ -152,10 +152,16 @@ class Project(models.Model):
     person = models.ForeignKey(Person, related_name='projects', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
-    img = models.URLField(max_length=200)
+    img = models.ImageField(upload_to='cv/projects', blank=True)
     link = models.OneToOneField(Link, on_delete=models.PROTECT)
     start_date = models.DateField()
     pub_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.title
+
+
+class Homelab(models.Model):
+    person = models.OneToOneField(Person, related_name='homelab', on_delete=models.CASCADE)
+    rack = models.ImageField(upload_to='cv/homelab', blank=True)
+    architecture = models.ImageField(upload_to='homelab', blank=True)
