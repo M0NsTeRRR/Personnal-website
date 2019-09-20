@@ -17,7 +17,7 @@ This is my own website :)
 
 ## Requirements
 
-- Python >= 3.6
+- Python >= 3.7
 - Pip3
 - Node.js >= 8.9
 - npm
