@@ -5,6 +5,11 @@ LABEL maintainer="Ludovic Ortega mastership@hotmail.fr"
 # update package
 RUN apk update
 
+# install package required by pillow
+RUN apk add build-base \
+    jpeg-dev \
+    zlib-dev
+
 # copy program and requirements
 COPY * /app/backend/
 
