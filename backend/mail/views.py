@@ -63,7 +63,6 @@ class MailViewset(APIView):
                 send_mail('Contact form ludovic-ortega.adminafk.fr', plain_message, os.environ['EMAIL_HOST_USER'], [os.environ['EMAIL_RECEIVER']], html_message=html_message)
                 send_mail('Message sent on ludovic-ortega.adminafk.fr', plain_message, os.environ['EMAIL_HOST_USER'], [form.cleaned_data['email']], html_message=html_message)
             except Exception as e:
-                print(str(e))
                 return Response({"success": False, "message": "Something wrent wrong. Sorry for inconveniance, try again later."})
             return Response({"success": True, "message": "Success ! Your Email has been sent, if your request can't wait, you can also reach me on my social media accounts."})
         else:
