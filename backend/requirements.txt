@@ -2,20 +2,20 @@ certifi==2019.9.11
 chardet==3.0.4
 coreapi==2.3.3
 coreschema==0.0.4
-Django==2.2.5
-django-cors-headers==3.1.0
+Django==2.2.6
+django-cors-headers==3.1.1
 django-nested-admin==3.2.4
 djangorestframework==3.10.3
 gunicorn==19.9.0; sys_platform != 'win32'
 idna==2.8
 itypes==1.1.0
-Jinja2==2.10.1
+Jinja2==2.10.3
 MarkupSafe==1.1.1
-Pillow==6.1.0
+Pillow==6.2.0
 python-monkey-business==1.0.0
-pytz==2019.2
+pytz==2019.3
 requests==2.22.0
-sentry-sdk==0.12.2
+sentry-sdk==0.12.3
 six==1.12.0
 sqlparse==0.3.0
 uritemplate==3.0.0
