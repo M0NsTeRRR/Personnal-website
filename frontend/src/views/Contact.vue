@@ -161,6 +161,7 @@
                     this.message_alert.success = false;
                     this.message_alert.message = "Something wrent wrong. Sorry for inconveniance, try again later.";
                     this.message_alert.show = true;
+                    this.onCaptchaExpired();
                 }
             }
         }
