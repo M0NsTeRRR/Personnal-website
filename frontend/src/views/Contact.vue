@@ -49,7 +49,7 @@
                         <vue-recaptcha
                                 v-model="reCaptcha.checked"
                                 ref="recaptcha"
-                                sitekey="6LcIpr0UAAAAAHlr4zHxhY1qE4Cirww89QldOFE1"
+                                sitekey="6Lemqb0UAAAAAA5DNX5uE0ODChbnW0LaetbswUl9"
                                 @verify="onCaptchaVerified"
                                 @expired="onCaptchaExpired"
                                 rules="captchaRules"

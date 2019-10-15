@@ -61,7 +61,7 @@ class MailViewset(APIView):
             try:
                 url = 'https://www.google.com/recaptcha/api/siteverify'
                 data = {
-                    'secret': '6LcIpr0UAAAAAF30bf1M02aX2hpEgtax5JRdzDV4',
+                    'secret': os.environ['RECAPTCHA_SECRET_KEY'],
                     'response': form.cleaned_data['reCaptchaToken']
                 }
                 r = requests.post(url, data=data)
