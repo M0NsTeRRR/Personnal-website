@@ -44,6 +44,7 @@ class MailForm(forms.Form):
     email = forms.EmailField(required=True)
     subject = forms.CharField(min_length=1, max_length=50, required=True)
     message = forms.CharField(min_length=1, max_length=2000, widget=forms.Textarea, required=True)
+    reCaptchaToken = forms.CharField(required=True)
 
     def validate(self, value):
         super().validate(value)

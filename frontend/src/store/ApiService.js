@@ -67,12 +67,13 @@ export default {
     getHomelab(id) {
         return backend().get(apiPath + "cv/person/" + id + "/homelab/");
     },
-    postMail(name, email, subject, message) {
+    postMail(name, email, subject, message, reCaptchaToken) {
         return backend().post(apiPath + "mail/", {
             name: name,
             email: email,
             subject: subject,
-            message: message
+            message: message,
+            reCaptchaToken: reCaptchaToken
         });
     }
 };

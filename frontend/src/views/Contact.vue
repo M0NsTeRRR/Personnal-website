@@ -6,16 +6,16 @@
         <v-layout row wrap>
             <v-flex offset-lg2 lg8 offset-md1 md10 xs12>
                 <v-snackbar
-                        v-model="mailResponse.show"
+                        v-model="message_alert.show"
                         v-bind:timeout="10000"
                         v-bind:top="true"
-                        v-bind:color="mailResponse.success ? 'success' : 'error'"
+                        v-bind:color="message_alert.success ? 'success' : 'error'"
                         v-bind:multi-line="true"
                 >
-                    {{ mailResponse.message }}
+                    {{ message_alert.message }}
                     <v-btn
                             text
-                            @click="mailResponse.show = false"
+                            @click="message_alert.show = false"
                     >
                         <v-icon>fas fa-times</v-icon>
                     </v-btn>
@@ -46,6 +46,19 @@
                         ></component>
                     </v-layout>
                     <v-layout row justify-center>
+                        <vue-recaptcha
+                                v-model="reCaptcha.checked"
+                                ref="recaptcha"
+                                sitekey="6LcIpr0UAAAAAHlr4zHxhY1qE4Cirww89QldOFE1"
+                                @verify="onCaptchaVerified"
+                                @expired="onCaptchaExpired"
+                                rules="captchaRules"
+                                :loadRecaptchaScript="true"
+                        ></vue-recaptcha>
+                    </v-layout>
+                    <br>
+
+                    <v-layout row justify-center>
                         <v-btn
                                 color="teal"
                                 class="font-weight-light title white--text animated bounceInUp"
@@ -66,18 +79,23 @@
 
 <script>
     import { VTextField, VTextarea } from "vuetify/lib";
+    import VueRecaptcha from 'vue-recaptcha';
     import ApiService from "@/store/ApiService";
 
     export default {
         name: "Contact",
-        components: { VTextField, VTextarea },
+        components: { VTextField, VTextarea, VueRecaptcha },
         data: () => ({
             valid : true,
             loading: false,
-            mailResponse: {
+            message_alert: {
                 show: false,
                 success: true,
                 message: "No message"
+            },
+            reCaptcha: {
+                checked: false,
+                token: ""
             },
             name: "",
             nameRules: [
@@ -107,29 +125,42 @@
             ]
         }),
         methods: {
+            onCaptchaExpired: function () {
+                this.reCaptcha.checked = false;
+                this.$refs.recaptcha.reset();
+            },
+            onCaptchaVerified(token) {
+                this.reCaptcha.checked = true;
+                this.reCaptcha.token = token;
+            },
             validate () {
-                if (this.$refs.form.validate()) {
+                if (this.$refs.form.validate() && this.reCaptcha.checked) {
                     this.loading = true;
-                    this.postMail(this.name, this.email, this.subject, this.message);
+                    this.postMail(this.name, this.email, this.subject, this.message, this.reCaptcha.token);
+                } else if(this.reCaptcha.checked === false) {
+                    this.message_alert.success = false;
+                    this.message_alert.message = "reCaptcha must be checked";
+                    this.message_alert.show = true;
                 }
             },
-            async postMail(name, email, subject, message) {
+            async postMail(name, email, subject, message, reCaptchaToken) {
                 try {
-                    const response = await ApiService.postMail(name, email, subject, message);
-                    this.mailResponse.success = response.data.success;
-                    this.mailResponse.message = response.data.message;
-                    this.mailResponse.show = true;
+                    const response = await ApiService.postMail(name, email, subject, message, reCaptchaToken);
+                    this.message_alert.success = response.data.success;
+                    this.message_alert.message = response.data.message;
+                    this.message_alert.show = true;
                     this.loading = false;
-                    if(this.mailResponse.success === true)
+                    if(this.message_alert.success === true)
                     {
                         this.$refs.form.reset();
+                        this.onCaptchaExpired();
                     }
                 }
                 catch (e) {
                     this.loading = false;
-                    this.mailResponse.success = false;
-                    this.mailResponse.message = "Something wrent wrong. Sorry for inconveniance, try again later.";
-                    this.mailResponse.show = true;
+                    this.message_alert.success = false;
+                    this.message_alert.message = "Something wrent wrong. Sorry for inconveniance, try again later.";
+                    this.message_alert.show = true;
                 }
             }
         }
