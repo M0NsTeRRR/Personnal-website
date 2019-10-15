@@ -37,38 +37,36 @@
 
 import backend from "@/store/ApiConfig";
 
-const apiPath = "api/";
-
 export default {
     get(url) {
         return backend().get(url);
     },
     getPerson(id) {
-        return backend().get(apiPath + "cv/person/" + id + "/");
+        return backend().get("cv/person/" + id + "/");
     },
     getExperiences(id) {
-        return backend().get(apiPath + "cv/person/" + id + "/experiences/");
+        return backend().get("cv/person/" + id + "/experiences/");
     },
     getEducations(id) {
-        return backend().get(apiPath + "cv/person/" + id + "/educations/");
+        return backend().get("cv/person/" + id + "/educations/");
     },
     getLanguages(id) {
-        return backend().get(apiPath + "cv/person/" + id + "/languages/");
+        return backend().get("cv/person/" + id + "/languages/");
     },
     getSkills(id) {
-        return backend().get(apiPath + "cv/person/" + id + "/skills/");
+        return backend().get("cv/person/" + id + "/skills/");
     },
     getProjects(id) {
-        return backend().get(apiPath + "cv/person/" + id + "/projects/");
+        return backend().get("cv/person/" + id + "/projects/");
     },
     getSocials(id) {
-        return backend().get(apiPath + "cv/person/" + id + "/socials/");
+        return backend().get("cv/person/" + id + "/socials/");
     },
     getHomelab(id) {
-        return backend().get(apiPath + "cv/person/" + id + "/homelab/");
+        return backend().get("cv/person/" + id + "/homelab/");
     },
     postMail(name, email, subject, message, reCaptchaToken) {
-        return backend().post(apiPath + "mail/", {
+        return backend().post("mail/", {
             name: name,
             email: email,
             subject: subject,
