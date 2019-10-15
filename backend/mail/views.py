@@ -36,6 +36,8 @@
 # ----------------------------------------------------------------------------
 
 import os
+import requests
+import json
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -44,9 +46,6 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 from .forms import MailForm
-import requests
-import json
-
 
 class MailViewset(APIView):
     @classmethod
