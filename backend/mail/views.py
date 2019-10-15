@@ -72,10 +72,11 @@ class MailViewset(APIView):
                     plain_message = strip_tags(html_message)
                     send_mail('Contact form ludovic-ortega.adminafk.fr', plain_message, os.environ['EMAIL_HOST_USER'], [os.environ['EMAIL_RECEIVER']], html_message=html_message)
                     send_mail('Message sent on ludovic-ortega.adminafk.fr', plain_message, os.environ['EMAIL_HOST_USER'], [form.cleaned_data['email']], html_message=html_message)
+                    reply = {"success": True,"message": "Success ! Your Email has been sent, if your request can't wait, you can also reach me on my social media accounts."}
                 else:
-                    return Response({"success": False, "message": "reCaptcha is invalid."})
+                    reply = {"success": False, "message": "reCaptcha is invalid."}
             except Exception as e:
-                return Response({"success": False, "message": "Something wrent wrong. Sorry for inconveniance, try again later."})
-            return Response({"success": True, "message": "Success ! Your Email has been sent, if your request can't wait, you can also reach me on my social media accounts."})
+                reply = {"success": False, "message": "Something wrent wrong. Sorry for inconveniance, try again later."}
         else:
-            return Response({"success": False, "message": "Make sure all fields are entered and valid."})
+            reply = {"success": False, "message": "Make sure all fields are entered and valid."}
+        return Response(reply)
