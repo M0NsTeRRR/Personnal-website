@@ -22,9 +22,14 @@
                     <v-icon>fas fa-server</v-icon>
                 </v-tab>
 
-                <v-tab key="tab_homelab-architecture">
-                    Homelab architecture
+                <v-tab key="tab_homelab-hardware-architecture">
+                    Homelab hardware architecture
                     <v-icon>fas fa-sitemap</v-icon>
+                </v-tab>
+
+                <v-tab key="tab_homelab-application-architecture">
+                    Homelab application architecture
+                    <v-icon>fas fa-desktop</v-icon>
                 </v-tab>
             </v-tabs>
 
@@ -47,11 +52,28 @@
                             </template>
                         </v-img>
                     </v-tab-item>
-                    <v-tab-item key="tab-homelab-architecture">
+                    <v-tab-item key="tab-homelab-hardware-architecture">
                         <v-img
-                                v-bind:src="homelab.architecture === null ? '../assets/no_image_available.jpg' : homelab.architecture"
-                                v-on:error="homelab.architecture = '../assets/no_image_available.jpg'"
-                                alt="Homelab architecture"
+                                v-bind:src="homelab.hardware_architecture === null ? '../assets/no_image_available.jpg' : homelab.hardware_architecture"
+                                v-on:error="homelab.hardware_architecture = '../assets/no_image_available.jpg'"
+                                alt="Homelab hardware architecture"
+                        >
+                            <template v-slot:placeholder>
+                                <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                >
+                                    <v-progress-circular indeterminate color="teal"></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+                    </v-tab-item>
+                    <v-tab-item key="tab-homelab-application-architecture">
+                        <v-img
+                                v-bind:src="homelab.application_architecture === null ? '../assets/no_image_available.jpg' : homelab.application_architecture"
+                                v-on:error="homelab.application_architecture = '../assets/no_image_available.jpg'"
+                                alt="Homelab application architecture"
                         >
                             <template v-slot:placeholder>
                                 <v-row

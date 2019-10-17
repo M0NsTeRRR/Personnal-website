@@ -164,7 +164,8 @@ class HomelabSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'rack',
-            'architecture'
+            'hardware_architecture',
+            'application_architecture'
         )
 
 

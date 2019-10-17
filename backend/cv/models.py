@@ -41,7 +41,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Link(models.Model):
     title = models.CharField(max_length=100)
-    url = models.URLField(max_length=200)
+    url = models.URLField(max_length=500)
     TYPE_CHOICE = (
         ('github', 'Github'),
         ('website', 'Website'),
@@ -164,4 +164,5 @@ class Project(models.Model):
 class Homelab(models.Model):
     person = models.OneToOneField(Person, related_name='homelab', on_delete=models.CASCADE)
     rack = models.ImageField(upload_to='cv/homelab', blank=True)
-    architecture = models.ImageField(upload_to='homelab', blank=True)
+    hardware_architecture = models.ImageField(upload_to='cv/homelab', blank=True)
+    application_architecture = models.ImageField(upload_to='cv/homelab', blank=True)
