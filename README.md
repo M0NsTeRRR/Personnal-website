@@ -45,7 +45,7 @@ In backend directory run `python3 manage.py runserver`
 
 The code is under CeCILL license.
 
-You can find all details here: http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
+You can find all details here: https://cecill.info/licences/Licence_CeCILL_V2.1-en.html
 
 # Credits
 
