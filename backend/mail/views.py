@@ -74,7 +74,7 @@ class MailViewset(APIView):
                     reply = {"success": True,"message": "Success ! Your Email has been sent, if your request can't wait, you can also reach me on my social media accounts."}
                 else:
                     reply = {"success": False, "message": "reCaptcha is invalid."}
-            except Exception as e:
+            except Exception:
                 reply = {"success": False, "message": "Something wrent wrong. Sorry for inconveniance, try again later."}
         else:
             reply = {"success": False, "message": "Make sure all fields are entered and valid."}

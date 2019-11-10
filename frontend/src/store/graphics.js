@@ -50,8 +50,7 @@ export default {
         };
         return iconList.hasOwnProperty(type.toLowerCase()) ? iconList[type.toLowerCase()] : "";
     },
-    getIconBackground(type)
-    {
+    getIconBackground(type){
         const iconList = {
             "facebook": "blue darken-4",
             "twitter": "blue darken-1blue darken-4",
