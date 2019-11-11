@@ -20,8 +20,5 @@ RUN npm run-script build
 # create static directory
 RUN mkdir -p /opt/services/frontend/static/
 
-# make sure static directory is empty
-RUN rm -R /opt/services/frontend/static/*
-
 # copy dist files in static directory
 RUN mv ./dist/* /opt/services/frontend/static/

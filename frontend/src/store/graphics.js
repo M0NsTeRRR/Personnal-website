@@ -48,7 +48,7 @@ export default {
             "programming": "fas fa-code",
             "systems": "fas fa-server",
         };
-        return iconList.hasOwnProperty(type.toLowerCase()) ? iconList[type.toLowerCase()] : "";
+        return Object.prototype.hasOwnProperty.call(iconList, type.toLowerCase()) ? iconList[type.toLowerCase()] : "";
     },
     getIconBackground(type){
         const iconList = {
@@ -58,6 +58,6 @@ export default {
             "github": "black",
             "website": "teal",
         };
-        return iconList.hasOwnProperty(type.toLowerCase()) ? iconList[type.toLowerCase()] : "";
+        return Object.prototype.hasOwnProperty.call(iconList, type.toLowerCase()) ? iconList[type.toLowerCase()] : "";
     }
 };
