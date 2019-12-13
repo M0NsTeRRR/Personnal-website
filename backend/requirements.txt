@@ -5,7 +5,7 @@ coreschema==0.0.4
 Django==2.2.8
 django-cors-headers==3.2.0
 django-nested-admin==3.2.4
-djangorestframework==3.10.3
+djangorestframework==3.11.0
 gunicorn==20.0.4; sys_platform != 'win32'
 idna==2.8
 itypes==1.1.0
