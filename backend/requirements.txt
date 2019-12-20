@@ -18,5 +18,5 @@ requests==2.22.0
 sentry-sdk==0.13.5
 six==1.13.0
 sqlparse==0.3.0
-uritemplate==3.0.0
+uritemplate==3.0.1
 urllib3==1.25.7
