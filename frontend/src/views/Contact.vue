@@ -4,7 +4,7 @@
         <h1 class="font-weight-thin display-3 text-center animated bounceInDown">Contact</h1>
         <br><br><br>
         <v-layout row wrap>
-            <v-flex offset-lg2 lg8 offset-md1 md10 xs12>
+            <v-flex offset-lg2 lg8 offset-md1 md10 offset-xs1 xs10>
                 <v-snackbar
                         v-model="message_alert.show"
                         v-bind:timeout="10000"

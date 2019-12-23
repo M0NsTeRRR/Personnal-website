@@ -78,12 +78,27 @@
                     >
                         {{ dialog.title }}
                     </v-card-title>
+                    <v-layout class="pa-2">
+                        <v-img
+                                v-bind:src="dialog.img === null ? '../assets/no_image_available.jpg' : dialog.img"
+                                v-bind:alt="dialog.title"
+                                aspect-ratio="2"
+                        >
+                            <template v-slot:placeholder>
+                                <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                >
+                                    <v-progress-circular indeterminate color="teal"></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+                    </v-layout>
 
                     <v-card-text class="headline black--text">
                         {{ dialog.description }}
                     </v-card-text>
-
-                    <v-divider></v-divider>
 
                     <v-card-actions>
                         <v-btn
@@ -138,6 +153,7 @@
             api_error: false,
             dialog: {
                 title: '',
+                img: '',
                 description: '',
                 button: {
                     color : '',
@@ -176,6 +192,7 @@
                 this.dialog.button.url = project.link.url;
                 this.dialog.button.color = this.get_iconBackground(project.link.type);
                 this.dialog.title = project.title;
+                this.dialog.img = project.img;
                 this.dialog.description = project.description;
                 this.dialog.visible = true;
             }
