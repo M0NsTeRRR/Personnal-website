@@ -13,7 +13,7 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 Pillow==7.1.2
 python-monkey-business==1.0.0
-pytz==2019.3
+pytz==2020.1
 requests==2.23.0
 sentry-sdk==0.14.3
 six==1.14.0
