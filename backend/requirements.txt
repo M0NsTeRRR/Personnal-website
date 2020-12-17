@@ -14,7 +14,7 @@ MarkupSafe==1.1.1
 Pillow==8.0.1
 python-monkey-business==1.0.0
 pytz==2020.4
-requests==2.25.0
+requests==2.25.1
 sentry-sdk==0.19.5
 six==1.15.0
 sqlparse==0.4.1
