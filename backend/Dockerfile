@@ -1,4 +1,4 @@
-FROM python:3.9.4-alpine
+FROM python:3.10.0b3-alpine
 
 LABEL maintainer="Ludovic Ortega mastership@hotmail.fr"
 
