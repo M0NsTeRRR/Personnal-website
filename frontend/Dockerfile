@@ -1,4 +1,4 @@
-FROM node:16.6.1-alpine
+FROM node:16.9.1-alpine
 
 LABEL maintainer="Ludovic Ortega mastership@hotmail.fr"
 
